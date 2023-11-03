@@ -9,4 +9,5 @@ The importance of having a digitized system for library management, or any digit
 ## Tech-Stack
 HTML, CSS, Flask, REACT, SQL
 
+### [UI Mockups](https://www.figma.com/file/KjISFzZ9MbHKiAaw4LSMA7/CS-520-Library-Management-Prototype?type=design&node-id=0-1&mode=design&t=w4KTVNnB36AV7dE3-0)
 
