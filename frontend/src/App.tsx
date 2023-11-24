@@ -1,6 +1,10 @@
 import React, { useState, useEffect} from 'react';
-import logo from './logo.svg';
 import './App.css';
+import { Container } from './components/container/Container';
+import { Book } from './types/Book';
+import books from "./testbookdata.json"
+import users from "./testuserdata.json"
+import { User } from './types/User';
 
 function App() {
 
@@ -21,8 +25,8 @@ function App() {
 
   return (
     <div>
-
-
+      <Container items={books as Book[]} contentType={"book"}/>
+      
     </div>
     // <div className="App">
     //   <header className="App-header">

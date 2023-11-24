@@ -1,0 +1,43 @@
+
+.table{
+    width: 100%;
+    font-family: Inter;
+    text-align: center;
+    border-collapse:collapse;
+    font-size: 14px;
+  }
+  
+  .table th{
+    font-weight:normal;
+    color:rgb(100, 99, 99)
+  }
+  .table tbody tr:hover{
+    background-color: rgb(241, 241, 241);
+  }
+  .table tr{
+    cursor: pointer;
+  }
+  .table th,.table td{
+    border-bottom: 1px solid rgb(204, 204, 204);
+    min-height: 150px;
+    padding-top:15px;
+    padding-bottom: 15px; 
+  } 
+  
+  .table .bookstatus{
+    background-color: #A6E7D8;
+    color: #219A7D;
+    padding: 4px;
+    border:  2px solid #219A7D;
+    border-radius: 4px;
+  }
+  .table .bookstatus.unavailable{
+    background-color: #FFC5C5;
+    color: #E31C1C;
+    border:  2px solid #E31C1C;
+  
+  }
+  .table .table-img{
+    width: 40px;
+    height: 40px;
+  }
