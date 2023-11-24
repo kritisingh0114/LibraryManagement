@@ -226,5 +226,14 @@
         "availableAmount":1,
         "isAvailable":false,
         "category":"c"
+      },
+      {
+        "type":"book",
+        "id":"25",
+        "name":"book1",
+        "author":"author1",
+        "availableAmount":1,
+        "isAvailable":false,
+        "category":"c"
       }
   ]

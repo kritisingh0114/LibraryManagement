@@ -1,5 +1,5 @@
 
-export interface ContainerSetting{
+export interface ContainerState{
     pageSize:number
     searchString:string|null
     currPage:number

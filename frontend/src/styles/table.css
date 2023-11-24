@@ -1,6 +1,7 @@
 
 .table{
     width: 100%;
+    min-width: 600px;
     font-family: Inter;
     text-align: center;
     border-collapse:collapse;
@@ -19,17 +20,16 @@
   }
   .table th,.table td{
     border-bottom: 1px solid rgb(204, 204, 204);
-    min-height: 150px;
-    padding-top:15px;
-    padding-bottom: 15px; 
+    padding-top:1em;
+    padding-bottom: 1em; 
   } 
   
   .table .bookstatus{
     background-color: #A6E7D8;
     color: #219A7D;
-    padding: 4px;
+    padding: 0.3em;
     border:  2px solid #219A7D;
-    border-radius: 4px;
+    border-radius: 0.3em;
   }
   .table .bookstatus.unavailable{
     background-color: #FFC5C5;
@@ -38,6 +38,6 @@
   
   }
   .table .table-img{
-    width: 40px;
-    height: 40px;
+    width: 2.5em;
+    height: 2.5em;
   }

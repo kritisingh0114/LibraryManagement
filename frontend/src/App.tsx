@@ -26,7 +26,8 @@ function App() {
   return (
     <div>
       <Container items={books as Book[]} contentType={"book"}/>
-      
+      <Container items={users as User[]} contentType={"user"}/>
+
     </div>
     // <div className="App">
     //   <header className="App-header">

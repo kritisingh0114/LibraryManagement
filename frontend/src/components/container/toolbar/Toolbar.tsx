@@ -1,13 +1,14 @@
-import { ContainerSetting } from "../../../types/ContainerSetting"
+import { ContainerState } from "../../../types/ContainerState"
+import "./../../../styles/toolbar.css"
 
 type Props={
-    setting:ContainerSetting
-    setSetting:(setting:ContainerSetting)=>void
+    state:ContainerState
+    setState:(state:ContainerState)=>void
 }
 
 export function Toolbar(props:Props){
     return (<>
-    <div>
+    <div className="toolbar">
         toolbar
     </div>
     </>)

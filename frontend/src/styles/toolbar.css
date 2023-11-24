@@ -1,0 +1,6 @@
+.toolbar{
+    height: 100px;
+    background-color: gainsboro;
+    display: block;
+    width: 100%;
+}
