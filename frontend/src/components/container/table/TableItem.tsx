@@ -9,15 +9,13 @@ type Props={
     item:Item
 }
 
-function onClick(id:string,type:string){
-    alert("clicked "+type+" "+id+"")
-}
 export function TableItem(props:Props){
-    const [id,setId]=useState(props.item.id)
-    const [type,setType]=useState(props.item.type)
     
+    function onClick(id:string,type:string){
+        alert("clicked "+type+" "+id+"")
+    }
     return (
-        <tr onClick={()=>onClick(id,type)}>
+        <tr onClick={()=>onClick(props.item.id,props.item.type)}>
             {props.item.type==="book"&& (<BookTableItem item={props.item as Book}/>)}
             {props.item.type==="user"&& (<UserTableItem item={props.item as User}/>)}
         </tr>
