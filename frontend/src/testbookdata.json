@@ -48,7 +48,7 @@
       {
         "type":"book",
         "id":"6",
-        "name":"book1",
+        "name":"name",
         "author":"author1",
         "availableAmount":1,
         "isAvailable":false,
@@ -106,7 +106,7 @@
       {
         "type":"book",
         "id":"12",
-        "name":"book1",
+        "name":"book1name",
         "author":"author1",
         "availableAmount":1,
         "isAvailable":false,
@@ -134,7 +134,7 @@
       {
         "type":"book",
         "id":"15",
-        "name":"book1",
+        "name":"boonamek1",
         "author":"author1",
         "availableAmount":1,
         "isAvailable":false,
@@ -163,7 +163,7 @@
       {
         "type":"book",
         "id":"18",
-        "name":"book1",
+        "name":"bnameook1",
         "author":"author1",
         "availableAmount":1,
         "isAvailable":false,
@@ -193,7 +193,7 @@
       {
         "type":"book",
         "id":"21",
-        "name":"book1",
+        "name":"boonamek1",
         "author":"author1",
         "availableAmount":1,
         "isAvailable":false,
@@ -230,7 +230,7 @@
       {
         "type":"book",
         "id":"25",
-        "name":"book1",
+        "name":"bonameok1",
         "author":"author1",
         "availableAmount":1,
         "isAvailable":false,

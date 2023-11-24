@@ -1,10 +1,10 @@
 import { useState } from "react"
-import { ContainerState } from "../../types/ContainerState"
+import { ContainerState, PageState } from "../../types/ContainerState"
 import "./../../styles/pagenav.css"
 
 type Props={
-    state:ContainerState
-    setState:(state:ContainerState)=>void
+    page:PageState
+    setPage:(page:PageState)=>void
     itemCount:number
 }
 function range(start:number,end:number){
@@ -44,33 +44,33 @@ function createPageList(currpage:number,lastPage:number,maxLen:number):number[]{
 
 export function PageNav(props:Props){
     //zero indexed
-    const lastPage = Math.floor((props.itemCount-1)/props.state.pageSize)+1
+    const lastPage = Math.floor((props.itemCount-1)/props.page.pageSize)+1
 
     const [maxLen,setMaxLen] = useState(7)
 
     //one indexed
-    const pagelist = createPageList(props.state.currPage,lastPage,maxLen)
+    const pagelist = createPageList(props.page.page,lastPage,maxLen)
     
     function onClickNext(){
-        goPage(props.state.currPage+1)
+        goPage(props.page.page+1)
     }
     function onClickPrev(){
-        goPage(props.state.currPage-1)
+        goPage(props.page.page-1)
     }
     /**
      * 
      * @param page zero indexed
      */
     function goPage(page:number){
-        if(page>=0 && page < lastPage) props.setState({...props.state,currPage:page})
+        if(page>=0 && page < lastPage) props.setPage({...props.page,page:page})
     }
 
     return (<div className="pagenav">
         <div className="nav-label">
-            <p>Showing data {props.state.currPage * props.state.pageSize+1} to {Math.min(props.itemCount,(props.state.currPage+1) * props.state.pageSize)} of {props.itemCount} entries</p>
+            <p>Showing data {props.page.page * props.page.pageSize+1} to {Math.min(props.itemCount,(props.page.page+1) * props.page.pageSize)} of {props.itemCount} entries</p>
         </div>
         <ul className="page">
-        <li onClick={onClickPrev} className={"page__btn " + (props.state.currPage>0&&"active")}>{'<'}</li>
+        <li onClick={onClickPrev} className={"page__btn " + (props.page.page>0&&"active")}>{'<'}</li>
         {pagelist.map(n=>{
             if(n===PageNum.EMPTY){
                 return (<li className="page__dots"> &nbsp;</li>)
@@ -79,10 +79,10 @@ export function PageNav(props:Props){
                 return (<li className="page__dots">...</li>)
             }
             else{
-                return (<li onClick={()=>goPage(n-1)} className={`page__numbers ${n-1 === props.state.currPage && "active" }`}>{n}</li>)
+                return (<li onClick={()=>goPage(n-1)} className={`page__numbers ${n-1 === props.page.page && "active" }`}>{n}</li>)
             }
         })}
-        <li onClick={onClickNext} className={"page__btn " + (props.state.currPage+1<lastPage&&"active")}>{'>'}</li>
+        <li onClick={onClickNext} className={"page__btn " + (props.page.page+1<lastPage&&"active")}>{'>'}</li>
     </ul>
     </div>)
 }

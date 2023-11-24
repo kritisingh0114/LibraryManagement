@@ -1,7 +1,11 @@
+import type { Item } from "./Item"
+import type Filter from "./filter/Filter"
 
 export interface ContainerState{
-    pageSize:number
-    searchString:string|null
-    currPage:number
+    filter:Filter<Item>|null
     viewType:string
+}
+export interface PageState{
+    pageSize:number
+    page:number
 }
