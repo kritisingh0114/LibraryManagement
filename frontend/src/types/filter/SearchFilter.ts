@@ -5,9 +5,9 @@ export default class SearchFilter<T extends Item> implements Filter<T>{
 
     private propSelector:(item:T)=>string|undefined
     private searchStr:string
-    constructor(searchStr:string,propSelector:(item:T)=>string|undefined){
+    constructor(propSelector:(item:T)=>string|undefined){
         this.propSelector=propSelector
-        this.searchStr=searchStr
+        this.searchStr=""
     }
     check(item:T): boolean {
         let str = this.propSelector(item)
@@ -17,5 +17,11 @@ export default class SearchFilter<T extends Item> implements Filter<T>{
 		let matches=str.match(regex)?.length
 		return matches!==undefined && matches>0
     }
-
+    setFilterVal(searchStr:string){
+        this.searchStr=searchStr
+        return this
+    }
+    getFilterVal() {
+        return this.searchStr
+    }
 }

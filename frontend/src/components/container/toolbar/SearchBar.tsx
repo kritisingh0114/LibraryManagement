@@ -6,24 +6,30 @@ import  SearchFilter from "../../../types/filter/SearchFilter"
 type Props={
     state:ContainerState
     setState:(state:ContainerState)=>void
+    id:string
 }
 
-export function BookSearchBar({state,setState}:Props){
+export function SearchBar({state,setState,id}:Props){
     //generate unique id
-    const id = useId()
-
+    
     function onSearch(){
-        let val=(document.getElementById("book-input-"+id) as HTMLInputElement)?.value
+        let val=(document.getElementById("search-input-"+id) as HTMLInputElement)?.value
         if(!val) return
 
+        if(!state.filter){
+            alert("Select a filter type first!")
+            return
+        }
         setState({
             ...state,
-            filter:new SearchFilter<Book>(val,(item)=>item.name)
+            filter:state.filter?.setFilterVal(val),
+            filterVal:val
         })
     }
+    console.log(state.filterVal)
     return (
         <div className="searchbar">
-            <input type="text" placeholder="Search.." name="search" id={"book-input-"+id}/>
+            <input type="text" placeholder="Search.." name="search" id={"search-input-"+id}/>
             <button onClick={onSearch}><img src="search.svg"></img></button>
         </div>
     )

@@ -38,8 +38,7 @@ function applyFilter(state: ContainerState, items: Item[]): Item[] {
 
 export function Container(props: Props) {
 	const [state, setState] = useState<ContainerState>({
-		filter: null,
-		viewType: "table",
+		viewType: "table"
 	})
 	const [page,setPage] = useState<PageState>({
 		page:0,
