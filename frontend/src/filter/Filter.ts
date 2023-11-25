@@ -1,4 +1,4 @@
-import type { Item } from "../Item";
+import type { Item } from "../types/Item";
 
 export default interface Filter<T extends Item>{
     check(item:T):boolean

@@ -1,7 +1,7 @@
 import { type } from "os"
 import { ContainerState } from "../../../types/ContainerState"
 import { Item } from "../../../types/Item"
-import SearchFilter from "../../../types/filter/SearchFilter"
+import SearchFilter from "../../../filter/SearchFilter"
 import { Dropdown } from "../../input/dropdown"
 import { TextInput } from "../../input/text"
 import "./../../../styles/toolbar.css"

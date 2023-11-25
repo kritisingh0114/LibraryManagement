@@ -38,7 +38,7 @@ function applyFilter(state: ContainerState, items: Item[]): Item[] {
 
 export function Container(props: Props) {
 	const [state, setState] = useState<ContainerState>({
-		viewType: "table"
+		viewType: "table",
 	})
 	const [page,setPage] = useState<PageState>({
 		page:0,
@@ -46,7 +46,7 @@ export function Container(props: Props) {
 	})
 	
 	let filteredItems:Item[]=applyFilter(state,props.items)
-
+	
 	useEffect(()=>{
 		filteredItems = applyFilter(state,props.items)
 	},[state])

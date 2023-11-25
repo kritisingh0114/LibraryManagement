@@ -1,7 +1,7 @@
 import { useId } from "react"
 import type { Book } from "../../../types/Book"
 import type { ContainerState } from "../../../types/ContainerState"
-import  SearchFilter from "../../../types/filter/SearchFilter"
+import  SearchFilter from "../../../filter/SearchFilter"
 
 type Props={
     state:ContainerState

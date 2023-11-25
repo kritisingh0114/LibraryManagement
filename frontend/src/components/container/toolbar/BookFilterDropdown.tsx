@@ -1,8 +1,7 @@
-import { Book } from "../../../types/Book";
+
 import { ContainerState } from "../../../types/ContainerState";
-import { FilterTypes as FT, FilterTypes } from "../../../types/filter/FilterTypes";
-import SearchFilter from "../../../types/filter/SearchFilter";
-import ValueFilter from "../../../types/filter/ValueFilter";
+import { BookFilterTactory } from "../../../filter/BookFilterFactory";
+import { FilterTypes as FT, FilterTypes } from "../../../filter/FilterTypes";
 import { Dropdown } from "../../input/dropdown";
 type Props={
     state:ContainerState
@@ -12,28 +11,8 @@ type Props={
 export function BookFilterDropdown({state,setState}:Props){
 
     function setFilter(val:string){
-        let filter
+        let filter=BookFilterTactory.create(val as FilterTypes)
 
-        switch(val){
-            case FT.NAME_SEARCH:
-                filter=new SearchFilter<Book>(book=>book.name)
-                break
-            case FT.AUTHOR_SEARCH:
-                filter=new SearchFilter<Book>(book=>book.author)
-                break
-            case FT.CATEGORY_SEARCH:
-                filter=new SearchFilter<Book>(book=>book.category)
-                break
-            case FT.ISBN_SEARCH:
-                filter=new SearchFilter<Book>(book=>book.ISBN)
-                break
-            case FT.AMOUNT:
-                filter=new ValueFilter<Book>(book=>book.availableAmount.toString())
-                break
-            case FT.AVAILABILITY:
-                filter=new ValueFilter<Book>(book=>book.isAvailable.toString())
-                break
-        }
         if(state.filter!=null && filter!=null){
             filter.setFilterVal(state.filter.getFilterVal() as never)
         }

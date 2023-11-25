@@ -1,4 +1,4 @@
-import { Item } from "../Item";
+import { Item } from "../types/Item";
 import Filter from "./Filter";
 
 export default class SearchFilter<T extends Item> implements Filter<T>{

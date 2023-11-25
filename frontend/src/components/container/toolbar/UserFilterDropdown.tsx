@@ -1,9 +1,7 @@
 
 import { ContainerState } from "../../../types/ContainerState";
-import { User } from "../../../types/User";
-import { FilterTypes as FT, FilterTypes } from "../../../types/filter/FilterTypes";
-import SearchFilter from "../../../types/filter/SearchFilter";
-import ValueFilter from "../../../types/filter/ValueFilter";
+import { FilterTypes as FT, FilterTypes } from "../../../filter/FilterTypes";
+import { UserFilterTactory } from "../../../filter/UserFilterFactory";
 import { Dropdown } from "../../input/dropdown";
 type Props={
     state:ContainerState
@@ -13,15 +11,7 @@ type Props={
 export function UserFilterDropdown({state,setState}:Props){
 
     function setFilter(val:string){
-        let filter
-        switch(val){
-            case FT.NAME_SEARCH:
-                filter=new SearchFilter<User>(user=>user.name)
-                break
-            case FT.EMAIL_SEARCH:
-                filter=new SearchFilter<User>(user=>user.email)
-                break
-        }
+        const filter=UserFilterTactory.create(val as FilterTypes)
         if(state.filterVal && filter!=null){
             filter.setFilterVal(state.filterVal)
         }
