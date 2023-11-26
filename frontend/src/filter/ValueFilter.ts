@@ -18,8 +18,4 @@ export default class ValueFilter<T extends Item> implements Filter<T>{
         this.value=value
         return this
     }
-    getFilterVal() {
-        
-        return this.value
-    }
 }

@@ -21,7 +21,4 @@ export default class SearchFilter<T extends Item> implements Filter<T>{
         this.searchStr=searchStr
         return this
     }
-    getFilterVal() {
-        return this.searchStr
-    }
 }

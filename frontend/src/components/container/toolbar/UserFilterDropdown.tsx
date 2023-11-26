@@ -1,6 +1,6 @@
 
 import { ContainerState } from "../../../types/ContainerState";
-import { FilterTypes as FT, FilterTypes } from "../../../filter/FilterTypes";
+import { FilterType as FT, FilterType } from "../../../filter/FilterType";
 import { UserFilterTactory } from "../../../filter/UserFilterFactory";
 import { Dropdown } from "../../input/dropdown";
 type Props={
@@ -11,11 +11,11 @@ type Props={
 export function UserFilterDropdown({state,setState}:Props){
 
     function setFilter(val:string){
-        const filter=UserFilterTactory.create(val as FilterTypes)
+        const filter=UserFilterTactory.create(val as FilterType)
         if(state.filterVal && filter!=null){
             filter.setFilterVal(state.filterVal)
         }
-        setState({...state,filter:filter,filterType:val as FilterTypes})
+        setState({...state,filter:filter,filterType:val as FilterType})
     }
     return(
         <Dropdown title={"Filter By"} items={[

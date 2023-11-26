@@ -4,7 +4,7 @@ type Props={
 export function BookStatus(props:Props){
 
     return (
-        <span className={`bookstatus ${props.isAvaliable? " available":" unavailable"}`}>
+        <span className={`bookstatus ${props.isAvaliable? " ":" red"}`}>
             {props.isAvaliable?"Available":"Unavailable"}
         </span>
     )

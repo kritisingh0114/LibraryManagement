@@ -31,7 +31,7 @@
     border:  2px solid #219A7D;
     border-radius: 0.3em;
   }
-  .table .bookstatus.unavailable{
+  .table .bookstatus.red{
     background-color: #FFC5C5;
     color: #E31C1C;
     border:  2px solid #E31C1C;

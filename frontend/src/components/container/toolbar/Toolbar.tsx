@@ -1,14 +1,11 @@
-import { type } from "os"
+
 import { ContainerState } from "../../../types/ContainerState"
-import { Item } from "../../../types/Item"
-import SearchFilter from "../../../filter/SearchFilter"
-import { Dropdown } from "../../input/dropdown"
-import { TextInput } from "../../input/text"
 import "./../../../styles/toolbar.css"
 import { SearchBar } from "./SearchBar"
 import { BookFilterDropdown } from "./BookFilterDropdown"
 import { UserFilterDropdown } from "./UserFilterDropdown"
 import { useId } from "react"
+import { ContentType } from "../../../types/ContentType"
 
 type Props={
     state:ContainerState
@@ -32,16 +29,13 @@ export function Toolbar(props:Props){
             input.value=""
 
     }
-    
-    
+
     return (
     <div className="toolbar">
-
-        {/* <TextInput title="text" label="title"></TextInput> */}
-        <button className="clear-filter" onClick={clearFilter}>Clear</button>
+        {props.contentType===ContentType.BOOK && <BookFilterDropdown state={props.state} setState={props.setState}/>}
+        {props.contentType===ContentType.USER && <UserFilterDropdown state={props.state} setState={props.setState}/>}
         <SearchBar state={props.state} setState={props.setState} id={id}/>
-        {props.contentType==="book" && <BookFilterDropdown state={props.state} setState={props.setState}/>}
-        {props.contentType==="user" && <UserFilterDropdown state={props.state} setState={props.setState}/>}
+        <button className="clear-filter" onClick={clearFilter}>Clear</button>
     </div>
     )
 }

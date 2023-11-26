@@ -1,4 +1,4 @@
-export enum FilterTypes
+export enum FilterType
 {
     //common
     NAME_SEARCH="By Name",

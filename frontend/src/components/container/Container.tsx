@@ -45,11 +45,7 @@ export function Container(props: Props) {
 		pageSize:7
 	})
 	
-	let filteredItems:Item[]=applyFilter(state,props.items)
-	
-	useEffect(()=>{
-		filteredItems = applyFilter(state,props.items)
-	},[state])
+	const filteredItems:Item[]=applyFilter(state,props.items)
 
 	return (
 		<div className="container">

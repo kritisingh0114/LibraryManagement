@@ -1,11 +1,11 @@
 import type { Item } from "./Item"
 import type Filter from "../filter/Filter"
-import { FilterTypes } from "../filter/FilterTypes"
+import { FilterType } from "../filter/FilterType"
 
 export interface ContainerState{
     filter?:Filter<Item>
     viewType:string
-    filterType?:FilterTypes
+    filterType?:FilterType
     filterVal?:string
 }
 export interface PageState{

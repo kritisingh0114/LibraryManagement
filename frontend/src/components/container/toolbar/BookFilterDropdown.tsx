@@ -1,7 +1,7 @@
 
 import { ContainerState } from "../../../types/ContainerState";
 import { BookFilterTactory } from "../../../filter/BookFilterFactory";
-import { FilterTypes as FT, FilterTypes } from "../../../filter/FilterTypes";
+import { FilterType as FT, FilterType } from "../../../filter/FilterType";
 import { Dropdown } from "../../input/dropdown";
 type Props={
     state:ContainerState
@@ -11,12 +11,12 @@ type Props={
 export function BookFilterDropdown({state,setState}:Props){
 
     function setFilter(val:string){
-        let filter=BookFilterTactory.create(val as FilterTypes)
+        let filter=BookFilterTactory.create(val as FilterType)
 
         if(state.filter!=null && filter!=null){
-            filter.setFilterVal(state.filter.getFilterVal() as never)
+            filter.setFilterVal(state.filterVal as never)
         }
-        setState({...state,filter:filter,filterType:val as FilterTypes})
+        setState({...state,filter:filter,filterType:val as FilterType})
     }
     return(
         <Dropdown title={"Filter By"} items={[

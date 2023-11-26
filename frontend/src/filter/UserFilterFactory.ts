@@ -1,9 +1,9 @@
 
 import SearchFilter from "./SearchFilter"
-import { FilterTypes as FT } from "./FilterTypes"
+import { FilterType as FT } from "./FilterType"
 import { User } from "../types/User"
 export namespace UserFilterTactory{
-    export function create(val:string)
+    export function create(val:FT)
     {
         let filter
         switch(val){

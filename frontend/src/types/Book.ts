@@ -1,3 +1,4 @@
+import { ContentType } from "./ContentType"
 import { Item } from "./Item"
 
 export interface Book extends Item{
@@ -7,6 +8,6 @@ export interface Book extends Item{
     category:string
     ISBN:string
     availableAmount:number
-    type:"book"
+    type:ContentType.BOOK
     rentalDate?:Date
 }

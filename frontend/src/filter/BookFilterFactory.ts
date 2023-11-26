@@ -1,9 +1,9 @@
 import { Book } from "../types/Book"
 import SearchFilter from "./SearchFilter"
 import ValueFilter from "./ValueFilter"
-import { FilterTypes as FT } from "./FilterTypes"
+import { FilterType as FT } from "./FilterType"
 export namespace BookFilterTactory{
-    export function create(val:string)
+    export function create(val:FT)
     {
         let filter
 

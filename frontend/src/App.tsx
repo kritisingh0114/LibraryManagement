@@ -5,6 +5,7 @@ import { Book } from './types/Book';
 import books from "./testbookdata.json"
 import users from "./testuserdata.json"
 import { User } from './types/User';
+import { ContentType } from './types/ContentType';
 
 function App() {
 
@@ -25,8 +26,8 @@ function App() {
 
   return (
     <div>
-      <Container items={books as Book[]} contentType={"book"}/>
-      <Container items={users as User[]} contentType={"user"}/>
+      <Container items={books as Book[]} contentType={ContentType.BOOK}/>
+      <Container items={users as User[]} contentType={ContentType.USER}/>
 
     </div>
     // <div className="App">
