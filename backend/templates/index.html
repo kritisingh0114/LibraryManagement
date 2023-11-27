@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Flask</title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    </head>
+    <body style="padding: 20px;">
+        <form action="/add_text" method="post">
+            <label for="textv">Add Value:</label><br>
+            <input type="text" id="textv" name="textv" value=""><br>
+            <input type="submit" value="Submit">
+       </form>
+       <form action="/remove_text" method="post">
+        <label for="textv">Remove Value:</label><br>
+        <input type="text" id="textv" name="textv" value=""><br>
+        <input type="submit" value="Submit">
+   </form>
+       <br><br><hr>
+       <ul>
+            {% for text in all_text %}
+            <li> {{ text[1] }} </li>
+            {% endfor %}
+       </ul>
+</body>
+</html>
