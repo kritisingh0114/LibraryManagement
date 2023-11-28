@@ -1,5 +1,5 @@
-#test
 import pymysql
+from pytest import console_main
 #database connection
 connection = pymysql.connect(host="localhost", user="root", passwd="cs520mysqlinstaller!!", database="librarymanagement")
 cursor = connection.cursor()
@@ -16,5 +16,29 @@ def get_data():
 
 def remove_text(text):
     cursor.execute("DELETE FROM mytable where text_value = %s", (text))
+    rows = cursor.fetchall()    
+    return rows
+
+#GETTER ROUTES
+# Returns all authors
+def get_all_authors():
+    cursor.execute("SELECT * FROM authors")
+    rows = cursor.fetchall()    
+    return rows
+# Returns all books
+def get_all_books():
+    cursor.execute("SELECT * FROM books")
+    rows = cursor.fetchall()    
+    return rows
+
+# Returns all librarians
+def get_all_librarians():
+    cursor.execute("SELECT * FROM librarians")
+    rows = cursor.fetchall()    
+    return rows
+
+# Returns all users
+def get_all_users():
+    cursor.execute("SELECT * FROM users")
     rows = cursor.fetchall()    
     return rows

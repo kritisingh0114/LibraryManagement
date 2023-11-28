@@ -18,11 +18,26 @@
         <input type="text" id="textv" name="textv" value=""><br>
         <input type="submit" value="Submit">
    </form>
-       <br><br><hr>
-       <ul>
-            {% for text in all_text %}
-            <li> {{ text[1] }} </li>
-            {% endfor %} 
-       </ul>
+      <br><br><hr>
+      <ul>
+        {% for text in authors_data %}
+        <li> {{ text }} </li>
+        {% endfor %} 
+      </ul>
+      <ul>
+        {% for text in books_data %}
+        <li> {{ text }} </li>
+        {% endfor %} 
+      </ul>
+      <ul>
+        {% for text in librarians_data %}
+        <li> {{ text }} </li>
+        {% endfor %} 
+      </ul>
+      <ul>
+        {% for text in users_data %}
+        <li> {{ text }} </li>
+        {% endfor %} 
+      </ul>
 </body>
 </html>
