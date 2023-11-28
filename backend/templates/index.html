@@ -8,7 +8,7 @@
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
     </head>
     <body style="padding: 20px;">
-        <form action="/add_text" method="post">
+        <!-- <form action="/add_text" method="post">
             <label for="textv">Add Value:</label><br>
             <input type="text" id="textv" name="textv" value=""><br>
             <input type="submit" value="Submit">
@@ -17,23 +17,56 @@
         <label for="textv">Remove Value:</label><br>
         <input type="text" id="textv" name="textv" value=""><br>
         <input type="submit" value="Submit">
-   </form>
+   </form> -->
+   <form action="/add_author" method="post">
+    <label for="text_add_author">Add Author:</label><br>
+    <input type="text" id="text_add_author" name="text_add_author" value=""><br>
+    <input type="submit" value="Submit">
+    </form>
+    <form action="/add_book" method="post">
+      <label for="text_add_book">Add Book:</label><br>
+      <input type="text" id="new_book_isbn" name="new_book_isbn" value="ISBN"><br>
+      <input type="text" id="new_book_title" name="new_book_title" value="Title"><br>
+      <input type="number" id="new_book_author" name="new_book_author" value="Author (number)"><br>
+      <input type="text" id="new_book_genre" name="new_book_genre" value="Genre"><br>
+      <input type="number" id="new_book_pubyear" name="new_book_pubyear" value="Publishing Year"><br>
+      <input type="text" id="new_book_synopsis" name="new_book_synopsis" value="Synopsis"><br>
+      <input type="text" id="new_book_availability" name="new_book_availability" value="Availability"><br>
+      <input type="submit" value="Submit">
+      </form>
+    <form action="/search_authors" method="post">
+      <label for="text_search_author">Search Author:</label><br>
+      <input type="text" id="text_search_author" name="text_search_author" value=""><br>
+      <input type="submit" value="Submit">
+    </form>
       <br><br><hr>
+      <h1>Searching</h1>
+      <h2>Author Search Results</h2>
+      <ul>
+        {% for text in author_search_data %}
+        <li> {{ text }} </li>
+        {% endfor %} 
+      </ul>
+      <h1>All Data</h1>
+      <h2>Authors</h2>
       <ul>
         {% for text in authors_data %}
         <li> {{ text }} </li>
         {% endfor %} 
       </ul>
+      <h2>Books</h2>
       <ul>
         {% for text in books_data %}
         <li> {{ text }} </li>
         {% endfor %} 
       </ul>
+      <h2>Librarians</h2>
       <ul>
         {% for text in librarians_data %}
         <li> {{ text }} </li>
         {% endfor %} 
       </ul>
+      <h2>Users</h2>
       <ul>
         {% for text in users_data %}
         <li> {{ text }} </li>
