@@ -37,6 +37,17 @@ def add_book():
         return redirect(url_for('display_all_data'))
     else:
         return render_template('index.html')
+    
+@app.route("/add_librarian", methods=["POST", "GET"])
+def add_librarian():
+    if request.method == "POST":
+        new_lib_name = request.form["new_lib_name"]
+        new_lib_email = request.form["new_lib_email"]
+        new_lib_phone = request.form["new_lib_phone"]
+        add_new = add_librarian_op(new_lib_name, new_lib_email, new_lib_phone)
+        return redirect(url_for('display_all_data'))
+    else:
+        return render_template('index.html')
 
 @app.route('/search_authors', methods=['GET', 'POST'])  
 def search_author():
@@ -99,26 +110,6 @@ def search_users():
                            users_data = all_users_data,
                            user_search_data = user_search_data)
     
-    
-# @app.route("/add_text", methods=["POST", "GET"])
-# def AddText():
-#     if request.method == "POST":
-#         text_value = request.form["textv"]
-#         #saving all the values to db
-#         add_new = add_text(text_value)
-#         return redirect(url_for('display_data'))
-#     else:
-#         return render_template('index.html')
-    
-# @app.route("/remove_text", methods=["POST", "GET"])
-# def RemoveText():
-#     if request.method == "POST":
-#         remove_text_value = request.form["textv"]
-#         #saving all the values to db
-#         remove_new = remove_text(remove_text_value)
-#         return redirect(url_for('display_data'))
-#     else:
-#         return render_template('index.html')
     
 if __name__ == "__main__":
     app.run(debug=True)

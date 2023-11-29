@@ -3,23 +3,6 @@ from pytest import console_main
 #database connection
 connection = pymysql.connect(host="localhost", user="root", passwd="cs520mysqlinstaller!!", database="librarymanagement")
 cursor = connection.cursor()
-#inserting data to db
-def add_text(text_value):
-    cursor.execute("INSERT INTO mytable(ID, text_value) VALUES (DEFAULT, %s)", (text_value))
-    connection.commit()
-    return 1
-
-def get_data():
-    cursor.execute("SELECT * FROM mytable")
-    rows = cursor.fetchall()    
-    return rows
-
-def remove_text(text):
-    cursor.execute("DELETE FROM mytable where text_value = %s", (text))
-    rows = cursor.fetchall()    
-    return rows
-
-
 
 #GETTER ROUTES
 # Returns all authors
@@ -57,6 +40,12 @@ def add_author_op(new_author):
 # Inserts new book
 def add_book_op(new_book_isbn, new_book_title, new_book_author, new_book_genre, new_book_pubyear, new_book_synopsis, new_book_availability):
     cursor.execute("INSERT INTO books(isbn, bookTitle, bookAuthor, bookGenre, bookPubYear, bookSynopsis, bookAvailability) VALUES (%s, %s, %s, %s, %s, %s, %s)", (new_book_isbn, new_book_title, new_book_author, new_book_genre, new_book_pubyear, new_book_synopsis, new_book_availability))
+    connection.commit()
+    return 1
+
+# Inserts new librarian
+def add_librarian_op(new_lib_name, new_lib_email, new_lib_phone):
+    cursor.execute("INSERT INTO librarians(libName, libEmail, libPhone) VALUES (%s, %s, %s)", (new_lib_name, new_lib_email, new_lib_phone))
     connection.commit()
     return 1
 

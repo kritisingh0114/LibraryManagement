@@ -8,10 +8,10 @@
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
     </head>
     <body style="padding: 20px;">
-   <form action="/add_author" method="post">
-    <label for="text_add_author">Add Author:</label><br>
-    <input type="text" id="text_add_author" name="text_add_author" value=""><br>
-    <input type="submit" value="Submit">
+    <form action="/add_author" method="post">
+      <label for="text_add_author">Add Author:</label><br>
+      <input type="text" id="text_add_author" name="text_add_author" value=""><br>
+      <input type="submit" value="Submit">
     </form>
     <form action="/add_book" method="post">
       <label for="text_add_book">Add Book:</label><br>
@@ -23,7 +23,14 @@
       <input type="text" id="new_book_synopsis" name="new_book_synopsis" value="Synopsis"><br>
       <input type="text" id="new_book_availability" name="new_book_availability" value="Availability"><br>
       <input type="submit" value="Submit">
-      </form>
+    </form>
+    <form action="/add_librarian" method="post">
+      <label for="text_add_librarian">Add Librarian:</label><br>
+      <input type="text" id="new_lib_name" name="new_lib_name" value="Name"><br>
+      <input type="text" id="new_lib_email" name="new_lib_email" value="Email"><br>
+      <input type="text" id="new_lib_phone" name="new_lib_phone" value="Phone"><br>
+      <input type="submit" value="Submit">
+    </form>
     <form action="/search_authors" method="post">
       <label for="text_search_author">Search Author:</label><br>
       <input type="text" id="text_search_author" name="text_search_author" value=""><br>
