@@ -83,6 +83,21 @@ def search_librarians():
                            librarians_data = all_librarians_data, 
                            users_data = all_users_data,
                            librarian_search_data = librarian_search_data)
+
+@app.route('/search_users', methods=['GET', 'POST'])  
+def search_users():
+    if request.method == "POST":
+        all_authors_data = get_all_authors()
+        all_books_data = get_all_books()
+        all_librarians_data = get_all_librarians()
+        all_users_data = get_all_users()
+        text_search_user = request.form["text_search_user"]
+        user_search_data = search_librarian_op(text_search_user)
+    return render_template('index.html', authors_data = all_authors_data, 
+                           books_data = all_books_data, 
+                           librarians_data = all_librarians_data, 
+                           users_data = all_users_data,
+                           user_search_data = user_search_data)
     
     
 # @app.route("/add_text", methods=["POST", "GET"])

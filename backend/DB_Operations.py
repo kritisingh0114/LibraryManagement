@@ -77,9 +77,16 @@ def search_book_op(search_book):
     rows = cursor.fetchall()
     return rows
 
-# Searches for specific user(s)
+# Searches for specific librarians(s)
 def search_librarian_op(search_librarian):
     cursor.execute("SELECT * from librarians WHERE librarianID LIKE '%{s}%' or libName LIKE '%{s}%' or libPhone LIKE '%{s}%' or libEmail LIKE '%{s}%'".format(s=search_librarian))
+    connection.commit()
+    rows = cursor.fetchall()
+    return rows
+
+# Searches for specific user(s)
+def search_user_op(search_user):
+    cursor.execute("SELECT * from users WHERE userID LIKE '%{s}%' or userName LIKE '%{s}%' or userPhone LIKE '%{s}%' or userEmail LIKE '%{s}%'".format(s=search_user))
     connection.commit()
     rows = cursor.fetchall()
     return rows
