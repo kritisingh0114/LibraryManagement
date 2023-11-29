@@ -23,7 +23,6 @@ def add_author():
     else:
         return render_template('index.html')
 
-#endpoint for search
 @app.route('/search_authors', methods=['GET', 'POST'])  
 def search_author():
     if request.method == "POST":
@@ -53,6 +52,21 @@ def add_book():
         return redirect(url_for('display_all_data'))
     else:
         return render_template('index.html')
+    
+@app.route('/search_books', methods=['GET', 'POST'])  
+def search_book():
+    if request.method == "POST":
+        all_authors_data = get_all_authors()
+        all_books_data = get_all_books()
+        all_librarians_data = get_all_librarians()
+        all_users_data = get_all_users()
+        text_search_book = request.form["text_search_book"]
+        book_search_data = search_book_op(text_search_book)
+    return render_template('index.html', authors_data = all_authors_data, 
+                           books_data = all_books_data, 
+                           librarians_data = all_librarians_data, 
+                           users_data = all_users_data,
+                           book_search_data = book_search_data)
     
     
 # @app.route("/add_text", methods=["POST", "GET"])

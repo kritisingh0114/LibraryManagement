@@ -60,3 +60,9 @@ def search_author_op(search_author):
     connection.commit()
     rows = cursor.fetchall()
     return rows
+
+def search_book_op(search_book):
+    cursor.execute("SELECT * from books, authors WHERE books.bookAuthor = authors.authorID and (isbn LIKE '%{s}%' or bookTitle LIKE '%{s}%' or bookAuthor LIKE '%{s}%' or bookGenre LIKE '%{s}%' or bookPubYear LIKE '%{s}%' or  bookSynopsis LIKE '%{s}%' or authors.authorName LIKE '%{s}%')".format(s=search_book))
+    connection.commit()
+    rows = cursor.fetchall()
+    return rows
