@@ -49,6 +49,12 @@ def add_librarian_op(new_lib_name, new_lib_email, new_lib_phone):
     connection.commit()
     return 1
 
+# Inserts new user
+def add_librarian_op(new_user_name, new_user_email, new_user_phone):
+    cursor.execute("INSERT INTO users(userName, userEmail, userPhone) VALUES (%s, %s, %s)", (new_user_name, new_user_email, new_user_phone))
+    connection.commit()
+    return 1
+
 
 
 #SEARCHING ROUTES

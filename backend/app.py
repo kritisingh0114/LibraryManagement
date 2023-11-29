@@ -48,6 +48,17 @@ def add_librarian():
         return redirect(url_for('display_all_data'))
     else:
         return render_template('index.html')
+    
+@app.route("/add_user", methods=["POST", "GET"])
+def add_user():
+    if request.method == "POST":
+        new_user_name = request.form["new_user_name"]
+        new_user_email = request.form["new_user_email"]
+        new_user_phone = request.form["new_user_phone"]
+        add_new = add_librarian_op(new_user_name, new_user_email, new_user_phone)
+        return redirect(url_for('display_all_data'))
+    else:
+        return render_template('index.html')
 
 @app.route('/search_authors', methods=['GET', 'POST'])  
 def search_author():
