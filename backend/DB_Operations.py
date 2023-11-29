@@ -19,6 +19,8 @@ def remove_text(text):
     rows = cursor.fetchall()    
     return rows
 
+
+
 #GETTER ROUTES
 # Returns all authors
 def get_all_authors():
@@ -43,26 +45,41 @@ def get_all_users():
     rows = cursor.fetchall()    
     return rows
 
-# inserting sql
+
+
+# INSERTING ROUTES
+# Inserts new author
 def add_author_op(new_author):
     cursor.execute("INSERT INTO authors(authorName) VALUES (%s)", (new_author))
     connection.commit()
     return 1
 
+# Inserts new book
 def add_book_op(new_book_isbn, new_book_title, new_book_author, new_book_genre, new_book_pubyear, new_book_synopsis, new_book_availability):
     cursor.execute("INSERT INTO books(isbn, bookTitle, bookAuthor, bookGenre, bookPubYear, bookSynopsis, bookAvailability) VALUES (%s, %s, %s, %s, %s, %s, %s)", (new_book_isbn, new_book_title, new_book_author, new_book_genre, new_book_pubyear, new_book_synopsis, new_book_availability))
     connection.commit()
     return 1
 
-#searching sql
+
+
+#SEARCHING ROUTES
+# Searches for specific author(s)
 def search_author_op(search_author):
     cursor.execute("SELECT * from authors WHERE authorName LIKE '%{s}%'".format(s=search_author))
     connection.commit()
     rows = cursor.fetchall()
     return rows
 
+# Searches for specific book(s)
 def search_book_op(search_book):
     cursor.execute("SELECT * from books, authors WHERE books.bookAuthor = authors.authorID and (isbn LIKE '%{s}%' or bookTitle LIKE '%{s}%' or bookAuthor LIKE '%{s}%' or bookGenre LIKE '%{s}%' or bookPubYear LIKE '%{s}%' or  bookSynopsis LIKE '%{s}%' or authors.authorName LIKE '%{s}%')".format(s=search_book))
+    connection.commit()
+    rows = cursor.fetchall()
+    return rows
+
+# Searches for specific user(s)
+def search_librarian_op(search_librarian):
+    cursor.execute("SELECT * from librarians WHERE librarianID LIKE '%{s}%' or libName LIKE '%{s}%' or libPhone LIKE '%{s}%' or libEmail LIKE '%{s}%'".format(s=search_librarian))
     connection.commit()
     rows = cursor.fetchall()
     return rows

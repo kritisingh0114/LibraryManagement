@@ -22,6 +22,21 @@ def add_author():
         return redirect(url_for('display_all_data'))
     else:
         return render_template('index.html')
+    
+@app.route("/add_book", methods=["POST", "GET"])
+def add_book():
+    if request.method == "POST":
+        new_book_isbn = request.form["new_book_isbn"]
+        new_book_title = request.form["new_book_title"]
+        new_book_author = request.form["new_book_author"]
+        new_book_genre = request.form["new_book_genre"]
+        new_book_pubyear = request.form["new_book_pubyear"]
+        new_book_synopsis = request.form["new_book_synopsis"]
+        new_book_availability = request.form["new_book_availability"]
+        add_new = add_book_op(new_book_isbn, new_book_title, new_book_author, new_book_genre, new_book_pubyear, new_book_synopsis, new_book_availability)
+        return redirect(url_for('display_all_data'))
+    else:
+        return render_template('index.html')
 
 @app.route('/search_authors', methods=['GET', 'POST'])  
 def search_author():
@@ -38,20 +53,6 @@ def search_author():
                            users_data = all_users_data,
                            author_search_data = author_search_data)
 
-@app.route("/add_book", methods=["POST", "GET"])
-def add_book():
-    if request.method == "POST":
-        new_book_isbn = request.form["new_book_isbn"]
-        new_book_title = request.form["new_book_title"]
-        new_book_author = request.form["new_book_author"]
-        new_book_genre = request.form["new_book_genre"]
-        new_book_pubyear = request.form["new_book_pubyear"]
-        new_book_synopsis = request.form["new_book_synopsis"]
-        new_book_availability = request.form["new_book_availability"]
-        add_new = add_book_op(new_book_isbn, new_book_title, new_book_author, new_book_genre, new_book_pubyear, new_book_synopsis, new_book_availability)
-        return redirect(url_for('display_all_data'))
-    else:
-        return render_template('index.html')
     
 @app.route('/search_books', methods=['GET', 'POST'])  
 def search_book():
@@ -67,6 +68,21 @@ def search_book():
                            librarians_data = all_librarians_data, 
                            users_data = all_users_data,
                            book_search_data = book_search_data)
+
+@app.route('/search_librarians', methods=['GET', 'POST'])  
+def search_librarians():
+    if request.method == "POST":
+        all_authors_data = get_all_authors()
+        all_books_data = get_all_books()
+        all_librarians_data = get_all_librarians()
+        all_users_data = get_all_users()
+        text_search_librarain = request.form["text_search_librarain"]
+        librarian_search_data = search_librarian_op(text_search_librarain)
+    return render_template('index.html', authors_data = all_authors_data, 
+                           books_data = all_books_data, 
+                           librarians_data = all_librarians_data, 
+                           users_data = all_users_data,
+                           librarian_search_data = librarian_search_data)
     
     
 # @app.route("/add_text", methods=["POST", "GET"])
