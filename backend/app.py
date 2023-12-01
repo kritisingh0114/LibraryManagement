@@ -120,6 +120,14 @@ def search_users():
                            librarians_data = all_librarians_data, 
                            users_data = all_users_data,
                            user_search_data = user_search_data)
+
+@app.route('/search_single_user', methods=['GET', 'POST'])  
+def search_single_users():
+    if request.method == "POST":
+        text_search_single_user = request.form["text_search_single_user"]
+        single_user_search_data = search_single_user_op(text_search_single_user)
+        json_single_user_search_data = json.dumps(single_user_search_data)
+    return json_single_user_search_data
     
     
 if __name__ == "__main__":

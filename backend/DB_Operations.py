@@ -85,3 +85,10 @@ def search_user_op(search_user):
     connection.commit()
     rows = cursor.fetchall()
     return rows
+
+# Searches for a sinlge user
+def search_single_user_op(search_user):
+    cursor.execute("SELECT * from users WHERE userID LIKE '%{s}%'".format(s=search_user))
+    connection.commit()
+    rows = cursor.fetchall()
+    return rows

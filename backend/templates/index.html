@@ -58,6 +58,11 @@
       <input type="text" id="text_search_user" name="text_search_user" value=""><br>
       <input type="submit" value="Submit">
     </form>
+    <form action="/search_single_user" method="post">
+      <label for="text_search_single_user">Search For a Single User by ID:</label><br>
+      <input type="text" id="text_search_single_user" name="text_search_single_user" value="User_ID"><br>
+      <input type="submit" value="Submit">
+    </form>
       <br><br><hr>
       <h1>Searching</h1>
       <h2>Author Search Results</h2>
@@ -81,6 +86,12 @@
       <h2>User Search Results</h2>
       <ul>
         {% for text in user_search_data %}
+        <li> {{ text }} </li>
+        {% endfor %} 
+      </ul>
+      <h2>Single User Search Results</h2>
+      <ul>
+        {% for text in single_user_search_data %}
         <li> {{ text }} </li>
         {% endfor %} 
       </ul>
