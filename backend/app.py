@@ -69,11 +69,8 @@ def search_author():
         all_users_data = get_all_users()
         text_search_author = request.form["text_search_author"]
         author_search_data = search_author_op(text_search_author)
-    return render_template('index.html', authors_data = all_authors_data, 
-                           books_data = all_books_data, 
-                           librarians_data = all_librarians_data, 
-                           users_data = all_users_data,
-                           author_search_data = author_search_data)
+        json_author_search_data = json.dumps(author_search_data)
+    return json_author_search_data
 
     
 @app.route('/search_books', methods=['GET', 'POST'])  
@@ -85,11 +82,8 @@ def search_book():
         all_users_data = get_all_users()
         text_search_book = request.form["text_search_book"]
         book_search_data = search_book_op(text_search_book)
-    return render_template('index.html', authors_data = all_authors_data, 
-                           books_data = all_books_data, 
-                           librarians_data = all_librarians_data, 
-                           users_data = all_users_data,
-                           book_search_data = book_search_data)
+        json_book_search_data = json.dumps(book_search_data)
+    return json_book_search_data
 
 @app.route('/search_librarians', methods=['GET', 'POST'])  
 def search_librarians():
@@ -100,11 +94,8 @@ def search_librarians():
         all_users_data = get_all_users()
         text_search_librarain = request.form["text_search_librarain"]
         librarian_search_data = search_librarian_op(text_search_librarain)
-    return render_template('index.html', authors_data = all_authors_data, 
-                           books_data = all_books_data, 
-                           librarians_data = all_librarians_data, 
-                           users_data = all_users_data,
-                           librarian_search_data = librarian_search_data)
+        json_librarian_search_data = json.dumps(librarian_search_data)
+    return json_librarian_search_data
 
 @app.route('/search_users', methods=['GET', 'POST'])  
 def search_users():
@@ -115,11 +106,8 @@ def search_users():
         all_users_data = get_all_users()
         text_search_user = request.form["text_search_user"]
         user_search_data = search_librarian_op(text_search_user)
-    return render_template('index.html', authors_data = all_authors_data, 
-                           books_data = all_books_data, 
-                           librarians_data = all_librarians_data, 
-                           users_data = all_users_data,
-                           user_search_data = user_search_data)
+        json_search_data = json.dumps(user_search_data)
+    return json_search_data
 
 @app.route('/search_single_user', methods=['GET', 'POST'])  
 def search_single_users():
