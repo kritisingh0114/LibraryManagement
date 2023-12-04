@@ -1,0 +1,37 @@
+[
+    {
+      "type":"user",
+      "id":"1",
+      "name":"user1",
+      "email":"1234",
+      "bookRented":2
+    },
+    {
+        "type":"user",
+        "id":"2",
+        "name":"user1",
+        "email":"1234",
+        "bookRented":2
+      },
+      {
+        "type":"user",
+        "id":"3",
+        "name":"user1",
+        "email":"1234",
+        "bookRented":2
+      },
+      {
+        "type":"user",
+        "id":"4",
+        "name":"user1",
+        "email":"1234",
+        "bookRented":2
+      },
+      {
+        "type":"user",
+        "id":"5",
+        "name":"user1",
+        "email":"1234",
+        "bookRented":2
+      }
+]

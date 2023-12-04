@@ -1,6 +1,11 @@
 import React, { useState, useEffect} from 'react';
-import logo from './logo.svg';
 import './App.css';
+import { Container } from './components/container/Container';
+import { Book } from './types/Book';
+import books from "./testbookdata.json"
+import users from "./testuserdata.json"
+import { User } from './types/User';
+import { ContentType } from './types/ContentType';
 
 function App() {
 
@@ -21,7 +26,8 @@ function App() {
 
   return (
     <div>
-
+      <Container items={books as Book[]} contentType={ContentType.BOOK}/>
+      <Container items={users as User[]} contentType={ContentType.USER}/>
 
     </div>
     // <div className="App">
