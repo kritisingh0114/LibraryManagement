@@ -5,6 +5,7 @@ import { Toolbar } from "./toolbar/Toolbar"
 import { ContainerContent } from "./ContainerContent"
 import { ContainerState as ContainerState, PageState } from "../../types/ContainerState"
 import "./../../styles/container.css"
+import { ContentType } from "../../types/ContentType"
 
 type Props = {
 	items: Item[]
@@ -36,6 +37,30 @@ function applyFilter(state: ContainerState, items: Item[]): Item[] {
 	return items.filter(item=>state.filter?.check(item))
 }
 
+const backend_url = "http://127.0.0.1:5000/"
+async function getData(type:string,setData:React.Dispatch<React.SetStateAction<Item[]>>,searchStr:string=""){
+	try{
+		let url=backend_url
+		switch(type){
+			case ContentType.BOOK:
+				url +="search_books?text_search_book="+searchStr
+				break
+			case ContentType.USER:
+				url +="search_users?text_search_user="+searchStr
+				break
+			default:
+				return
+		}
+
+		const data = await((await fetch(url, {mode:'cors'})).json())
+		console.table(data)
+	}
+	catch(e){
+		console.error(e)
+	}
+
+}
+
 export function Container(props: Props) {
 	const [state, setState] = useState<ContainerState>({
 		viewType: "table",
@@ -44,8 +69,14 @@ export function Container(props: Props) {
 		page:0,
 		pageSize:7
 	})
+	const [data,setData] = useState<Item[]>([])
 	
-	const filteredItems:Item[]=applyFilter(state,props.items)
+	useEffect( () => {
+		getData(props.contentType,setData)
+		
+	  }, [])
+
+	const filteredItems:Item[]=applyFilter(state,data)
 
 	return (
 		<div className="container">

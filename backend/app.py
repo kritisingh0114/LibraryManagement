@@ -1,7 +1,10 @@
 #test
 from flask import *
 from DB_Operations import *
+from flask_cors import CORS
 app = Flask(__name__)
+CORS(app)
+
 @app.route("/")
 def display_all_data():
     all_authors_data = get_all_authors()
@@ -70,17 +73,26 @@ def search_author():
         text_search_author = request.form["text_search_author"]
         author_search_data = search_author_op(text_search_author)
         json_author_search_data = json.dumps(author_search_data)
+    if request.method == "GET":
+        text_search_author = request.args.get("text_search_author")
+        author_search_data = search_author_op(text_search_author)
+        json_author_search_data = json.dumps(author_search_data)
     return json_author_search_data
 
     
 @app.route('/search_books', methods=['GET', 'POST'])  
 def search_book():
+    
     if request.method == "POST":
         # all_authors_data = get_all_authors()
         # all_books_data = get_all_books()
         # all_librarians_data = get_all_librarians()
         # all_users_data = get_all_users()
         text_search_book = request.form["text_search_book"]
+        book_search_data = search_book_op(text_search_book)
+        json_book_search_data = json.dumps(book_search_data)
+    if request.method == "GET":
+        text_search_book = request.args.get("text_search_book")
         book_search_data = search_book_op(text_search_book)
         json_book_search_data = json.dumps(book_search_data)
     return json_book_search_data
@@ -95,6 +107,10 @@ def search_librarians():
         text_search_librarain = request.form["text_search_librarain"]
         librarian_search_data = search_librarian_op(text_search_librarain)
         json_librarian_search_data = json.dumps(librarian_search_data)
+    if request.method == "GET":
+        text_search_librarain = request.args.get("text_search_librarain")
+        librarian_search_data = search_librarian_op(text_search_librarain)
+        json_librarian_search_data = json.dumps(librarian_search_data)
     return json_librarian_search_data
 
 @app.route('/search_users', methods=['GET', 'POST'])  
@@ -107,12 +123,20 @@ def search_users():
         text_search_user = request.form["text_search_user"]
         user_search_data = search_librarian_op(text_search_user)
         json_search_data = json.dumps(user_search_data)
+    if request.method == "GET":
+        text_search_user = request.args.get("text_search_user")
+        user_search_data = search_librarian_op(text_search_user)
+        json_search_data = json.dumps(user_search_data)
     return json_search_data
 
 @app.route('/search_single_user', methods=['GET', 'POST'])  
 def search_single_users():
     if request.method == "POST":
         text_search_single_user = request.form["text_search_single_user"]
+        single_user_search_data = search_single_user_op(text_search_single_user)
+        json_single_user_search_data = json.dumps(single_user_search_data)
+    if request.method == "GET":
+        text_search_single_user = request.args.get("text_search_single_user")
         single_user_search_data = search_single_user_op(text_search_single_user)
         json_single_user_search_data = json.dumps(single_user_search_data)
     return json_single_user_search_data
