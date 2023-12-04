@@ -88,7 +88,6 @@ def search_author_op(search_author):
 def search_book_op(search_book):
     with create_connection() as connection: 
         with connection.cursor() as cursor:
-            cursor.execute("SELECT * from books, authors WHERE books.bookAuthor = authors.authorID and (isbn LIKE '%{s}%' or bookTitle LIKE '%{s}%' or bookAuthor LIKE '%{s}%' or bookGenre LIKE '%{s}%' or bookPubYear LIKE '%{s}%' or  bookSynopsis LIKE '%{s}%' or authors.authorName LIKE '%{s}%')".format(s=search_book))
             connection.commit()
             rows = cursor.fetchall()
             return rows
@@ -106,6 +105,8 @@ def search_librarian_op(search_librarian):
 def search_user_op(search_user):
     with create_connection() as connection: 
         with connection.cursor() as cursor:
+            # cursor.execute("SELECT * from users WHERE librarianID LIKE '%{s}%' or libName LIKE '%{s}%' or libPhone LIKE '%{s}%' or libEmail LIKE '%{s}%'".format(s=search_user))
+
             cursor.execute("SELECT * from users WHERE userID LIKE '%{s}%' or userName LIKE '%{s}%' or userPhone LIKE '%{s}%' or userEmail LIKE '%{s}%'".format(s=search_user))
             connection.commit()
             rows = cursor.fetchall()

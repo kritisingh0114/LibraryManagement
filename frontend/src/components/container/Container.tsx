@@ -6,6 +6,7 @@ import { ContainerContent } from "./ContainerContent"
 import { ContainerState as ContainerState, PageState } from "../../types/ContainerState"
 import "./../../styles/container.css"
 import { ContentType } from "../../types/ContentType"
+import { DataConverter } from "../../types/converter"
 
 type Props = {
 	items: Item[]
@@ -32,9 +33,10 @@ function sliceItems(page: PageState, items: Item[]): Item[] {
  * @returns 
  */
 function applyFilter(state: ContainerState, items: Item[]): Item[] {	
-	if(!state.filter) return items
+	// if(!state.filter) return items
 
-	return items.filter(item=>state.filter?.check(item))
+	// return items.filter(item=>state.filter?.check(item))
+	return items
 }
 
 const backend_url = "http://127.0.0.1:5000/"
@@ -53,7 +55,17 @@ async function getData(type:string,setData:React.Dispatch<React.SetStateAction<I
 		}
 
 		const data = await((await fetch(url, {mode:'cors'})).json())
-		console.table(data)
+		// console.table(data);
+		switch(type){
+			case ContentType.BOOK:
+				setData(data.map((d: any,i:number)=>DataConverter.convertBook(d,i)) as Item[])
+				break
+			case ContentType.USER:
+				setData(data.map((d: any)=>DataConverter.convertUser(d)) as Item[])
+				break
+			default:
+				return
+		}
 	}
 	catch(e){
 		console.error(e)
@@ -72,9 +84,9 @@ export function Container(props: Props) {
 	const [data,setData] = useState<Item[]>([])
 	
 	useEffect( () => {
-		getData(props.contentType,setData)
-		
-	  }, [])
+		getData(props.contentType,setData,state.filterVal)
+		console.log(data.length)
+	  }, [state])
 
 	const filteredItems:Item[]=applyFilter(state,data)
 

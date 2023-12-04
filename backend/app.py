@@ -121,11 +121,11 @@ def search_users():
         # all_librarians_data = get_all_librarians()
         # all_users_data = get_all_users()
         text_search_user = request.form["text_search_user"]
-        user_search_data = search_librarian_op(text_search_user)
+        user_search_data = search_user_op(text_search_user)
         json_search_data = json.dumps(user_search_data)
     if request.method == "GET":
         text_search_user = request.args.get("text_search_user")
-        user_search_data = search_librarian_op(text_search_user)
+        user_search_data = search_user_op(text_search_user)
         json_search_data = json.dumps(user_search_data)
     return json_search_data
 

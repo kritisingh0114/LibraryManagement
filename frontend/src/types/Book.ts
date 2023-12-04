@@ -9,5 +9,7 @@ export interface Book extends Item{
     ISBN:string
     availableAmount:number
     type:ContentType.BOOK
+    year:number
+    synopsis:string
     rentalDate?:Date
 }

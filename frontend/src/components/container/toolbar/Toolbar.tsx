@@ -32,8 +32,8 @@ export function Toolbar(props:Props){
 
     return (
     <div className="toolbar">
-        {props.contentType===ContentType.BOOK && <BookFilterDropdown state={props.state} setState={props.setState}/>}
-        {props.contentType===ContentType.USER && <UserFilterDropdown state={props.state} setState={props.setState}/>}
+        {/* {props.contentType===ContentType.BOOK && <BookFilterDropdown state={props.state} setState={props.setState}/>} */}
+        {/* {props.contentType===ContentType.USER && <UserFilterDropdown state={props.state} setState={props.setState}/>} */}
         <SearchBar state={props.state} setState={props.setState} id={id}/>
         <button className="clear-filter" onClick={clearFilter}>Clear</button>
     </div>
