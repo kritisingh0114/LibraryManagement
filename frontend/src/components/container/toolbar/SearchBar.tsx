@@ -16,10 +16,10 @@ export function SearchBar({state,setState,id}:Props){
         let val=(document.getElementById("search-input-"+id) as HTMLInputElement)?.value
         if(!val) return
 
-        if(!state.filter){
-            alert("Select a filter type first!")
-            return
-        }
+        // if(!state.filter){
+        //     alert("Select a filter type first!")
+        //     return
+        // }
         setState({
             ...state,
             filter:state.filter?.setFilterVal(val),
