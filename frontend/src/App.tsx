@@ -8,6 +8,7 @@ import { Book } from './types/Book';
 import { ContentType } from './types/ContentType';
 import { User } from './types/User';
 
+// Main App We run for frontend
 function App() {
 
   const [data, setData] = useState([{}])
