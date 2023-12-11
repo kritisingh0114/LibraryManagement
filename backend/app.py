@@ -66,10 +66,6 @@ def add_user():
 @app.route('/search_authors', methods=['GET', 'POST'])  
 def search_author():
     if request.method == "POST":
-        # all_authors_data = get_all_authors()
-        # all_books_data = get_all_books()
-        # all_librarians_data = get_all_librarians()
-        # all_users_data = get_all_users()
         text_search_author = request.form["text_search_author"]
         author_search_data = search_author_op(text_search_author)
         json_author_search_data = json.dumps(author_search_data)
@@ -84,10 +80,6 @@ def search_author():
 def search_book():
     
     if request.method == "POST":
-        # all_authors_data = get_all_authors()
-        # all_books_data = get_all_books()
-        # all_librarians_data = get_all_librarians()
-        # all_users_data = get_all_users()
         text_search_book = request.form["text_search_book"]
         book_search_data = search_book_op(text_search_book)
         json_book_search_data = json.dumps(book_search_data)
@@ -100,10 +92,6 @@ def search_book():
 @app.route('/search_librarians', methods=['GET', 'POST'])  
 def search_librarians():
     if request.method == "POST":
-        # all_authors_data = get_all_authors()
-        # all_books_data = get_all_books()
-        # all_librarians_data = get_all_librarians()
-        # all_users_data = get_all_users()
         text_search_librarain = request.form["text_search_librarain"]
         librarian_search_data = search_librarian_op(text_search_librarain)
         json_librarian_search_data = json.dumps(librarian_search_data)
@@ -116,10 +104,6 @@ def search_librarians():
 @app.route('/search_users', methods=['GET', 'POST'])  
 def search_users():
     if request.method == "POST":
-        # all_authors_data = get_all_authors()
-        # all_books_data = get_all_books()
-        # all_librarians_data = get_all_librarians()
-        # all_users_data = get_all_users()
         text_search_user = request.form["text_search_user"]
         user_search_data = search_user_op(text_search_user)
         json_search_data = json.dumps(user_search_data)
