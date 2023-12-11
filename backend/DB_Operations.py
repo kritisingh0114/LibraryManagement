@@ -120,3 +120,24 @@ def search_single_user_op(search_user):
             connection.commit()
             rows = cursor.fetchall()
             return rows
+        
+# REMOVE ROUTES
+#remove an author from the table
+def remove_author_op(remove_author):
+    with create_connection() as connection: 
+        with connection.cursor() as cursor:
+            cursor.execute("DELETE FROM authors where authorName = '{s}'".format(s=remove_author))
+            connection.commit()
+            rows = cursor.fetchall()
+            return rows
+        
+
+# DATABASE INFO ROUTES
+# size of the authors table
+def size_authors_op():
+    with create_connection() as connection: 
+        with connection.cursor() as cursor:
+            cursor.execute("SELECT count(*) from authors")
+            connection.commit()
+            size = cursor.fetchall()
+            return size

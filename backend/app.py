@@ -139,6 +139,10 @@ def search_single_users():
         single_user_search_data = search_single_user_op(text_search_single_user)
         json_single_user_search_data = json.dumps(single_user_search_data)
     return json_single_user_search_data
+
+@app.route("/test_route", methods=["GET", "POST"])
+def index():
+    return jsonify({'hello': 'world'})
     
 #Run the app    
 if __name__ == "__main__":
