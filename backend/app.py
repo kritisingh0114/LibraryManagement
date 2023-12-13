@@ -142,7 +142,7 @@ def search_single_users():
         json_single_user_search_data = json.dumps(single_user_search_data)
     return json_single_user_search_data
 
-@app.route('/login_user', methods=['GET', 'POST'])  
+@app.route('/login_librarian', methods=['GET', 'POST'])  
 def verify_password():
     if request.method == "POST":
         input_username = request.form["username"]
@@ -155,6 +155,7 @@ def verify_password():
         login_librarian = check_librarian_info(input_username, input_password)
         json_login_librarian = json.dumps(login_librarian)
     return json_login_librarian
+
 
 @app.route("/test_route", methods=["GET", "POST"])
 def index():
