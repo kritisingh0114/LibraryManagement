@@ -142,6 +142,7 @@ def search_single_users():
         json_single_user_search_data = json.dumps(single_user_search_data)
     return json_single_user_search_data
 
+#Route to login a librarian
 @app.route('/login_librarian', methods=['GET', 'POST'])  
 def verify_password():
     if request.method == "POST":
