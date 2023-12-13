@@ -2,7 +2,7 @@ import pymysql
 # from pytest import console_main
 #database connection
 def create_connection():
-    return pymysql.connect(host="localhost", user="root", passwd="4321", database="librarymanagement")
+    return pymysql.connect(host="localhost", user="root", passwd="1234", database="librarymanagement")
 
 #GETTER ROUTES
 # Returns all authors
@@ -57,15 +57,15 @@ def add_book_op(new_book_isbn, new_book_title, new_book_author, new_book_genre, 
             return 1
 
 # Inserts new librarian
-def add_librarian_op(new_lib_name, new_lib_email, new_lib_phone):
+def add_librarian_op(new_lib_name, new_lib_email, new_lib_phone, new_is_lib, new_lib_password):
     with create_connection() as connection: 
         with connection.cursor() as cursor:
-            cursor.execute("INSERT INTO librarians(libName, libEmail, libPhone) VALUES (%s, %s, %s)", (new_lib_name, new_lib_email, new_lib_phone))
+            cursor.execute("INSERT INTO librarians(libName, libEmail, libPhone, isLib, libPassword) VALUES (%s, %s, %s, %s, %s)", (new_lib_name, new_lib_email, new_lib_phone, new_is_lib, new_lib_password))
             connection.commit()
             return 1
 
 # Inserts new user
-def add_librarian_op(new_user_name, new_user_email, new_user_phone):
+def add_user_op(new_user_name, new_user_email, new_user_phone):
     with create_connection() as connection: 
         with connection.cursor() as cursor:
             cursor.execute("INSERT INTO users(userName, userEmail, userPhone) VALUES (%s, %s, %s)", (new_user_name, new_user_email, new_user_phone))
@@ -105,8 +105,6 @@ def search_librarian_op(search_librarian):
 def search_user_op(search_user):
     with create_connection() as connection: 
         with connection.cursor() as cursor:
-            # cursor.execute("SELECT * from users WHERE librarianID LIKE '%{s}%' or libName LIKE '%{s}%' or libPhone LIKE '%{s}%' or libEmail LIKE '%{s}%'".format(s=search_user))
-
             cursor.execute("SELECT * from users WHERE userID LIKE '%{s}%' or userName LIKE '%{s}%' or userPhone LIKE '%{s}%' or userEmail LIKE '%{s}%'".format(s=search_user))
             connection.commit()
             rows = cursor.fetchall()
@@ -141,3 +139,13 @@ def size_authors_op():
             connection.commit()
             size = cursor.fetchall()
             return size
+        
+# LOGIN ROUTES
+# Verify Login for Librarians
+def check_librarian_info(username, password):
+    with create_connection() as connection: 
+        with connection.cursor() as cursor:
+            cursor.execute("SELECT librarianID, isLib FROM librarians WHERE libEmail = '{u}'".format(u=username, p=password))
+            connection.commit()
+            rows = cursor.fetchall()
+            return rows

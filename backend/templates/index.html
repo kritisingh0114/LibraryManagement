@@ -29,6 +29,8 @@
       <input type="text" id="new_lib_name" name="new_lib_name" value="Name"><br>
       <input type="text" id="new_lib_email" name="new_lib_email" value="Email"><br>
       <input type="text" id="new_lib_phone" name="new_lib_phone" value="Phone"><br>
+      <input type="text" id="new_is_lib" name="new_is_lib" value="isLib"><br>
+      <input type="text" id="new_lib_password" name="new_lib_password" value="Password"><br>
       <input type="submit" value="Submit">
     </form>
     <form action="/add_user" method="post">
@@ -63,7 +65,20 @@
       <input type="text" id="text_search_single_user" name="text_search_single_user" value="User_ID"><br>
       <input type="submit" value="Submit">
     </form>
+    <form action="/login_user" method="post">
+      <label for="text_search_single_user">Login Information:</label><br>
+      <input type="text" id="username" name="username" value="username"><br>
+      <input type="text" id="password" name="password" value="password"><br>
+      <input type="submit" value="Submit">
+    </form>
       <br><br><hr>
+      <h1>Login</h1>
+      <h2>Login Search Results</h2>
+      <ul>
+        {% for user in login_user_data %}
+        <li> {{ text }} </li>
+        {% endfor %} 
+      </ul>
       <h1>Searching</h1>
       <h2>Author Search Results</h2>
       <ul>

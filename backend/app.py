@@ -58,7 +58,9 @@ def add_librarian():
         new_lib_name = request.form["new_lib_name"]
         new_lib_email = request.form["new_lib_email"]
         new_lib_phone = request.form["new_lib_phone"]
-        add_new = add_librarian_op(new_lib_name, new_lib_email, new_lib_phone)
+        new_is_lib = request.form["new_is_lib"]
+        new_lib_password = request.form["new_lib_password"]
+        add_new = add_librarian_op(new_lib_name, new_lib_email, new_lib_phone, new_is_lib, new_lib_password)
         return redirect(url_for('display_all_data'))
     else:
         return render_template('index.html')
@@ -70,7 +72,7 @@ def add_user():
         new_user_name = request.form["new_user_name"]
         new_user_email = request.form["new_user_email"]
         new_user_phone = request.form["new_user_phone"]
-        add_new = add_librarian_op(new_user_name, new_user_email, new_user_phone)
+        add_new = add_user_op(new_user_name, new_user_email, new_user_phone)
         return redirect(url_for('display_all_data'))
     else:
         return render_template('index.html')
@@ -140,9 +142,24 @@ def search_single_users():
         json_single_user_search_data = json.dumps(single_user_search_data)
     return json_single_user_search_data
 
+@app.route('/login_user', methods=['GET', 'POST'])  
+def verify_password():
+    if request.method == "POST":
+        input_username = request.form["username"]
+        input_password = request.form["password"]
+        login_librarian = check_librarian_info(input_username, input_password)
+        json_login_librarian = json.dumps(login_librarian)
+    if request.method == "GET":
+        input_username = request.form["username"]
+        input_password = request.form["password"]
+        login_librarian = check_librarian_info(input_username, input_password)
+        json_login_librarian = json.dumps(login_librarian)
+    return json_login_librarian
+
 @app.route("/test_route", methods=["GET", "POST"])
 def index():
     return jsonify({'hello': 'world'})
+    
     
 #Run the app    
 if __name__ == "__main__":
