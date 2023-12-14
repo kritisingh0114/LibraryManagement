@@ -86,6 +86,33 @@ class AppTestCase(unittest.TestCase):
         new_size = json.loads(json.dumps(size_users_op()))[0][0]
         assert new_size == prev_size - 1
 
+    def test_search_exact_author_op(self):
+        author = json.loads(json.dumps(search_author_op("Stephen King")))[0]
+        assert author == [1, 'Stephen King']
+
+    def test_add_unique_book_op(self):
+        new_book_isbn = "111111111111112"
+        new_book_title = "Unique Books"
+        new_book_author = "3"
+        new_book_genre = "Humor"
+        new_book_pubyear = "1999"
+        new_book_synopsis = "Book written in 1999 and is a humor"
+        new_book_availability = "1"
+        # cur_size = json.loads(json.dumps(size_books_op()))[0][0]
+        # add_new = add_book_op(new_book_isbn, new_book_title, new_book_author, new_book_genre, new_book_pubyear, new_book_synopsis, new_book_availability)
+        # new_size = json.loads(json.dumps(size_books_op()))[0][0]
+        # assert new_size == cur_size + 1
+    
+    def test_search_exact_book_op(self):
+        books = json.loads(json.dumps(search_book_op("Unique Book")))[0]
+        assert books == ['111111111111111', "Unique Book", 3, "Humor", 1999, "Book written in 1999 and is a humor", 1, 3, "Emily Bronte"]
+
+    def test_search_book_op(self):
+        book_1 = json.loads(json.dumps(search_book_op("Unique Book")))[0]
+        assert book_1 == ['111111111111111', "Unique Book", 3, "Humor", 1999, "Book written in 1999 and is a humor", 1, 3, "Emily Bronte"]
+        book_2 = json.loads(json.dumps(search_book_op("Unique Books")))[0]
+        assert book_2 == ['111111111111112', "Unique Books", 3, "Humor", 1999, "Book written in 1999 and is a humor", 1, 3, "Emily Bronte"]
+
 
 
 
