@@ -2,7 +2,7 @@ import pymysql
 # from pytest import console_main
 #database connection
 def create_connection():
-    return pymysql.connect(host="localhost", user="root", passwd="1234", database="librarymanagement")
+    return pymysql.connect(host="localhost", user="root", passwd="4321", database="librarymanagement")
 
 #GETTER ROUTES
 # Returns all authors
@@ -88,6 +88,9 @@ def search_author_op(search_author):
 def search_book_op(search_book):
     with create_connection() as connection: 
         with connection.cursor() as cursor:
+            cursor.execute("SELECT * from books, authors WHERE books.bookAuthor = authors.authorID and (isbn LIKE '%{s}%' or bookTitle LIKE '%{s}%' or bookAuthor LIKE '%{s}%' or bookGenre LIKE '%{s}%' or bookPubYear LIKE '%{s}%' or authors.authorName LIKE '%{s}%')".format(s=search_book))
+
+            # cursor.execute("SELECT * from books, authors WHERE books.bookAuthor = authors.authorID and (isbn LIKE '%{s}%' or bookTitle LIKE '%{s}%' or bookAuthor LIKE '%{s}%' or bookGenre LIKE '%{s}%' or bookPubYear LIKE '%{s}%' or  bookSynopsis LIKE '%{s}%' or authors.authorName LIKE '%{s}%')".format(s=search_book))
             connection.commit()
             rows = cursor.fetchall()
             return rows
