@@ -11,7 +11,7 @@ export namespace DataConverter{
             year:book[4],
             synopsis:book[5],
             ISBN:book[0],
-            id:String(i),
+            id:String(book[0]),
             availableAmount:book[6],
             isAvailable:book[6]>0,
             type:ContentType.BOOK

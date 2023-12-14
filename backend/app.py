@@ -146,8 +146,9 @@ def search_single_users():
 @app.route('/login_librarian', methods=['GET', 'POST'])  
 def verify_password():
     if request.method == "POST":
-        input_username = request.form["username"]
-        input_password = request.form["password"]
+        input_username = request.json["username"]
+        input_password = request.json["password"]
+        print(input_username)
         login_librarian = check_librarian_info(input_username, input_password)
         json_login_librarian = json.dumps(login_librarian)
     if request.method == "GET":

@@ -15,6 +15,24 @@ code {
 	font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New", monospace;
 }
 
+.root{
+	display: flex;
+	flex-direction: row;
+	height: 100vh;
+}
+.page{
+	width: 100%;
+	position: relative;
+}
+
+
+.page-title{
+	text-align: center;
+	font-size: 30px;
+	margin-bottom: 0;
+	font-weight: bolder;
+}
+
 
 .dropdown ,.input-text{
 	position: relative;

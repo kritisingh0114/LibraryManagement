@@ -9,7 +9,7 @@ import { ContentType } from "../../types/ContentType"
 import { DataConverter } from "../../types/converter"
 
 type Props = {
-	items: Item[]
+	items?: Item[]
 	contentType: string
 }
 
