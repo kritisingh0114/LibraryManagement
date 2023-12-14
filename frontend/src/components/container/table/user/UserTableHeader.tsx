@@ -3,7 +3,7 @@
 export function UserTableHeader(){
     return (
     <>
-        <th>Image</th>
+        <th></th>
         <th>Name</th>
         <th>Email</th>
         <th>Books Rented</th>
