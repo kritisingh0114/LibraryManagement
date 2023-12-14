@@ -132,13 +132,67 @@ def remove_author_op(remove_author):
             rows = cursor.fetchall()
             return rows
         
+#remove a book from the table
+def remove_book_op(remove_book):
+    with create_connection() as connection: 
+        with connection.cursor() as cursor:
+            cursor.execute("DELETE FROM books where isbn = '{s}'".format(s=remove_book))
+            connection.commit()
+            rows = cursor.fetchall()
+            return rows
+        
+#remove a librarian from the table
+def remove_librarian_op(remove_lib):
+    with create_connection() as connection: 
+        with connection.cursor() as cursor:
+            cursor.execute("DELETE FROM librarians where libEmail = '{s}'".format(s=remove_lib))
+            connection.commit()
+            rows = cursor.fetchall()
+            return rows
 
+#remove a user from the table
+def remove_user_op(remove_user):
+    with create_connection() as connection: 
+        with connection.cursor() as cursor:
+            cursor.execute("DELETE FROM users where userEmail = '{s}'".format(s=remove_user))
+            connection.commit()
+            rows = cursor.fetchall()
+            return rows
+
+        
 # DATABASE INFO ROUTES
 # size of the authors table
 def size_authors_op():
     with create_connection() as connection: 
         with connection.cursor() as cursor:
             cursor.execute("SELECT count(*) from authors")
+            connection.commit()
+            size = cursor.fetchall()
+            return size
+        
+# size of the books table
+def size_books_op():
+    with create_connection() as connection: 
+        with connection.cursor() as cursor:
+            cursor.execute("SELECT count(*) from books")
+            connection.commit()
+            size = cursor.fetchall()
+            return size
+        
+# size of the librarians table
+def size_librarians_op():
+    with create_connection() as connection: 
+        with connection.cursor() as cursor:
+            cursor.execute("SELECT count(*) from librarians")
+            connection.commit()
+            size = cursor.fetchall()
+            return size
+        
+# size of the users table
+def size_users_op():
+    with create_connection() as connection: 
+        with connection.cursor() as cursor:
+            cursor.execute("SELECT count(*) from users")
             connection.commit()
             size = cursor.fetchall()
             return size

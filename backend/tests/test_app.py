@@ -20,20 +20,71 @@ class AppTestCase(unittest.TestCase):
 
     def test_add_author_op(self):
         new_author = "Test Add Author Op"
-        cur_size = size_authors_op()
+        cur_size = json.loads(json.dumps(size_authors_op()))[0][0]
         rows = add_author_op(new_author)
-        json_data_new_size = json.dumps(size_authors_op())
-        assert json_data_new_size == '[[27]]'
+        new_size = json.loads(json.dumps(size_authors_op()))[0][0]
+        assert new_size == cur_size + 1
 
     def test_remove_author_op(self):
         remove_author = "Test Add Author Op"
-        prev_size = size_authors_op()
+        prev_size = json.loads(json.dumps(size_authors_op()))[0][0]
         rows = remove_author_op(remove_author)
-        new_size = size_authors_op()
-        json_data_prev_size = json.dumps(prev_size)
-        json_data_new_size = json.dumps(new_size)
-        assert json_data_prev_size == '[[27]]'
-        assert json_data_new_size == '[[26]]'
+        new_size = json.loads(json.dumps(size_authors_op()))[0][0]
+        assert new_size == prev_size - 1
+
+    def test_add_book_op(self):
+        new_book_isbn = "123456789101112"
+        new_book_title = "Test Book"
+        new_book_author = "1"
+        new_book_genre = "Horror"
+        new_book_pubyear = "1999"
+        new_book_synopsis = "Book written in 1999 and is a horror"
+        new_book_availability = "1"
+        cur_size = json.loads(json.dumps(size_books_op()))[0][0]
+        add_new = add_book_op(new_book_isbn, new_book_title, new_book_author, new_book_genre, new_book_pubyear, new_book_synopsis, new_book_availability)
+        new_size = json.loads(json.dumps(size_books_op()))[0][0]
+        assert new_size == cur_size + 1
+
+    def test_remove_book_op(self):
+        remove_book = "123456789101112"
+        prev_size = json.loads(json.dumps(size_books_op()))[0][0]
+        rows = remove_book_op(remove_book)
+        new_size = json.loads(json.dumps(size_books_op()))[0][0]
+        assert new_size == prev_size - 1
+
+    def test_add_librarian_op(self):
+        new_lib_name = 'Test Librarian'
+        new_lib_email = 'testlibrarian@gmail.com'
+        new_lib_phone = '111-111-1111'
+        new_is_lib = '1'
+        new_lib_password = 'password'
+        cur_size = json.loads(json.dumps(size_librarians_op()))[0][0]
+        add_new = add_librarian_op(new_lib_name, new_lib_email, new_lib_phone, new_is_lib, new_lib_password)
+        new_size = json.loads(json.dumps(size_librarians_op()))[0][0]
+        assert new_size == cur_size + 1
+
+    def test_remove_librarian_op(self):
+        remove_lib = "testlibrarian@gmail.com"
+        prev_size = json.loads(json.dumps(size_librarians_op()))[0][0]
+        rows = remove_librarian_op(remove_lib)
+        new_size = json.loads(json.dumps(size_librarians_op()))[0][0]
+        assert new_size == prev_size - 1
+
+    def test_add_user_op(self):
+        new_user_name = "Test User"
+        new_user_email = "testuser@gmail.com"
+        new_user_phone = "222-222-2222"
+        cur_size = json.loads(json.dumps(size_users_op()))[0][0]
+        add_new = add_user_op(new_user_name, new_user_email, new_user_phone)
+        new_size = json.loads(json.dumps(size_users_op()))[0][0]
+        assert new_size == cur_size + 1
+
+    def test_remove_user_op(self):
+        remove_lib = "testuser@gmail.com"
+        prev_size = json.loads(json.dumps(size_users_op()))[0][0]
+        rows = remove_user_op(remove_lib)
+        new_size = json.loads(json.dumps(size_users_op()))[0][0]
+        assert new_size == prev_size - 1
 
 
 
