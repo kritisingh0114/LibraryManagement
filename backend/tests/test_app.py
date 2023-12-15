@@ -48,15 +48,23 @@ class AppTestCase(unittest.TestCase):
         new_book_pubyear = "1999"
         new_book_synopsis = "Book written in 1999 and is a horror"
         new_book_availability = "1"
+        data = json.loads(json.dumps(search_book_op(new_book_isbn)))
+        assert data == []
         cur_size = json.loads(json.dumps(size_books_op()))[0][0]
         add_new = add_book_op(new_book_isbn, new_book_title, new_book_author, new_book_genre, new_book_pubyear, new_book_synopsis, new_book_availability)
         new_size = json.loads(json.dumps(size_books_op()))[0][0]
+        data = json.loads(json.dumps(search_book_op(new_book_isbn)))[0]
+        assert data == ['123456789101112', "Test Book", 1, "Horror", 1999, "Book written in 1999 and is a horror", 1, 1, "Stephen King"]
         assert new_size == cur_size + 1
 
     def test_remove_book_op(self):
         remove_book = "123456789101112"
+        data = json.loads(json.dumps(search_book_op(remove_book)))[0]
+        assert data == ['123456789101112', "Test Book", 1, "Horror", 1999, "Book written in 1999 and is a horror", 1, 1, "Stephen King"]
         prev_size = json.loads(json.dumps(size_books_op()))[0][0]
         rows = remove_book_op(remove_book)
+        data = json.loads(json.dumps(search_book_op(remove_book)))
+        assert data == []
         new_size = json.loads(json.dumps(size_books_op()))[0][0]
         assert new_size == prev_size - 1
 
@@ -112,8 +120,8 @@ class AppTestCase(unittest.TestCase):
         # assert new_size == cur_size + 1
     
     def test_search_exact_book_op(self):
-        books = json.loads(json.dumps(search_book_op("Unique Book")))[0]
-        assert books == ['111111111111111', "Unique Book", 3, "Humor", 1999, "Book written in 1999 and is a humor", 1, 3, "Emily Bronte"]
+        books = json.loads(json.dumps(search_book_op("Unique Books")))[0]
+        assert books == ['111111111111112', "Unique Books", 3, "Humor", 1999, "Book written in 1999 and is a humor", 1, 3, "Emily Bronte"]
 
     def test_search_book_op(self):
         book_1 = json.loads(json.dumps(search_book_op("Unique Book")))[0]
