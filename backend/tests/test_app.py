@@ -74,15 +74,25 @@ class AppTestCase(unittest.TestCase):
         new_lib_phone = '111-111-1111'
         new_is_lib = '1'
         new_lib_password = 'password'
+        data = json.loads(json.dumps(search_librarian_op(new_lib_email)))
+        assert data == []
         cur_size = json.loads(json.dumps(size_librarians_op()))[0][0]
         add_new = add_librarian_op(new_lib_name, new_lib_email, new_lib_phone, new_is_lib, new_lib_password)
+        data = json.loads(json.dumps(search_librarian_op(new_lib_email)))[0]
+        data.pop(0)
+        assert data == ['Test Librarian', '111-111-1111', "testlibrarian@gmail.com", 1, 'password']
         new_size = json.loads(json.dumps(size_librarians_op()))[0][0]
         assert new_size == cur_size + 1
 
     def test_remove_librarian_op(self):
         remove_lib = "testlibrarian@gmail.com"
+        data = json.loads(json.dumps(search_librarian_op(remove_lib)))[0]
+        data.pop(0)
+        assert data == ['Test Librarian', '111-111-1111', "testlibrarian@gmail.com", 1, 'password']
         prev_size = json.loads(json.dumps(size_librarians_op()))[0][0]
         rows = remove_librarian_op(remove_lib)
+        data = json.loads(json.dumps(search_librarian_op(remove_lib)))
+        assert data == []
         new_size = json.loads(json.dumps(size_librarians_op()))[0][0]
         assert new_size == prev_size - 1
 
