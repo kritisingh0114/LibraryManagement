@@ -37,6 +37,22 @@ def get_all_users():
             rows = cursor.fetchall()    
             return rows
 
+#UPDATING ROUTES
+# updates a book to be checked out
+def checkout_book_op(isbn):
+    with create_connection() as connection: 
+        with connection.cursor() as cursor:
+            cursor.execute("UPDATE books SET bookAvailability = 0 WHERE isbn = '{s}';".format(s=isbn))
+            connection.commit()
+            return 1
+        
+# updates a book to be checked out
+def return_book_op(isbn):
+    with create_connection() as connection: 
+        with connection.cursor() as cursor:
+            cursor.execute("UPDATE books SET bookAvailability = 1 WHERE isbn = '{s}';".format(s=isbn))
+            connection.commit()
+            return 1
 
 
 # INSERTING ROUTES

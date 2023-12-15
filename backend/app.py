@@ -158,6 +158,26 @@ def verify_password():
         json_login_librarian = json.dumps(login_librarian)
     return json_login_librarian
 
+#checks out a book from the database
+@app.route("/checkout_book", methods=["POST", "GET"])
+def checkout_book():
+    if request.method == "POST": 
+        checkout_isbn = request.form["checkout_isbn"]
+        add_new = checkout_book_op(checkout_isbn) 
+        return redirect(url_for('display_all_data'))
+    else:
+        return render_template('index.html')
+    
+#returns out a book from the database
+@app.route("/return_book", methods=["POST", "GET"])
+def return_book():
+    if request.method == "POST": 
+        return_isbn = request.form["return_isbn"]
+        add_new = return_book_op(return_isbn) 
+        return redirect(url_for('display_all_data'))
+    else:
+        return render_template('index.html')
+
 
 @app.route("/test_route", methods=["GET", "POST"])
 def index():
