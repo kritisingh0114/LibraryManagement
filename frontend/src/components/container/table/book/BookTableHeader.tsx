@@ -8,6 +8,7 @@ export function BookTableHeader(){
         <th>Category</th>
         <th>Amount</th>
         <th>Status</th>
+        <th></th>
     </>
     )
 }

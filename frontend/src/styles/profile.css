@@ -1,0 +1,48 @@
+.profile-img > img{
+    width: 60px;
+    height: 60px;
+    margin-right: 20px;
+}
+.profile-img{
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    padding: 20px;
+    box-shadow: 0px 2px 3px -1px rgba(0,0,0,0.4);
+    width: 100%;
+    justify-content: center;
+}
+.user-profile{
+    /* margin: 20px; */
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+}
+.user-info{
+    text-align: center;
+    width: 50%;
+
+}
+.user-name{
+    font-size: 25px;
+    font-weight: bold;
+}
+.user-info sub{
+    color: gray;
+}
+.user-info p{
+    text-align: left;
+    padding: 10px;
+    width: 100%;
+  /* background-color: #c5caf5; */
+/* color: white; */
+    margin: 10px;
+    box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.4);
+    border-radius: 7px;
+    cursor: pointer;
+}
+.user-info svg{
+    display: inline;
+    margin-right: 5px;
+}

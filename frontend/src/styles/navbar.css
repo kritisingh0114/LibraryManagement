@@ -13,12 +13,16 @@
 }
 .navitem:hover{
     background-color: rgb(196, 196, 196);
-    text-decoration: underline;
+    /* text-decoration: underline; */
 
 }
 .navbar-btn:hover{
     background-color: rgb(196, 196, 196);
 
+}
+.navitem.active{
+    background: #0C21C1;
+    color: white;
 }
 .navbar-btn{
     cursor: pointer;
@@ -29,7 +33,7 @@
     width: 250px;   
 }
 .navbar-container{
-    height: 100%;
+    height: 100vh;
 
     /* border-right: 1px solid black; */
     box-shadow: 3px 0px 5px 0px rgba(183,181,199,0.3);

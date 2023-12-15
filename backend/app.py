@@ -162,7 +162,7 @@ def verify_password():
 @app.route("/checkout_book", methods=["POST", "GET"])
 def checkout_book():
     if request.method == "POST": 
-        checkout_isbn = request.form["checkout_isbn"]
+        checkout_isbn = request.json["checkout_isbn"]
         add_new = checkout_book_op(checkout_isbn) 
         return redirect(url_for('display_all_data'))
     else:
@@ -172,7 +172,7 @@ def checkout_book():
 @app.route("/return_book", methods=["POST", "GET"])
 def return_book():
     if request.method == "POST": 
-        return_isbn = request.form["return_isbn"]
+        return_isbn = request.json["return_isbn"]
         add_new = return_book_op(return_isbn) 
         return redirect(url_for('display_all_data'))
     else:
