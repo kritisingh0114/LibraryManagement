@@ -20,15 +20,23 @@ class AppTestCase(unittest.TestCase):
 
     def test_add_author_op(self):
         new_author = "Test Add Author Op"
+        data = json.loads(json.dumps(search_author_op(new_author)))
+        assert data == []
         cur_size = json.loads(json.dumps(size_authors_op()))[0][0]
         rows = add_author_op(new_author)
         new_size = json.loads(json.dumps(size_authors_op()))[0][0]
+        data = json.loads(json.dumps(search_author_op(new_author)))[0][1]
+        assert data == 'Test Add Author Op'
         assert new_size == cur_size + 1
 
     def test_remove_author_op(self):
         remove_author = "Test Add Author Op"
+        data = json.loads(json.dumps(search_author_op(remove_author)))[0][1]
+        assert data == 'Test Add Author Op'
         prev_size = json.loads(json.dumps(size_authors_op()))[0][0]
         rows = remove_author_op(remove_author)
+        data = json.loads(json.dumps(search_author_op(remove_author)))
+        assert data == []
         new_size = json.loads(json.dumps(size_authors_op()))[0][0]
         assert new_size == prev_size - 1
 
@@ -112,9 +120,6 @@ class AppTestCase(unittest.TestCase):
         assert book_1 == ['111111111111111', "Unique Book", 3, "Humor", 1999, "Book written in 1999 and is a humor", 1, 3, "Emily Bronte"]
         book_2 = json.loads(json.dumps(search_book_op("Unique Books")))[0]
         assert book_2 == ['111111111111112', "Unique Books", 3, "Humor", 1999, "Book written in 1999 and is a humor", 1, 3, "Emily Bronte"]
-
-
-
 
 
 
