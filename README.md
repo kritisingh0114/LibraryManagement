@@ -11,6 +11,4 @@ HTML, CSS, Flask, REACT, SQL
 
 ### [UI Mockups](https://www.figma.com/file/KjISFzZ9MbHKiAaw4LSMA7/CS-520-Library-Management-Prototype?type=design&node-id=0-1&mode=design&t=w4KTVNnB36AV7dE3-0)
 
-## Note:
-This is for our final project for Class CS 520. 
-
+#Credits to  “Vecteezy.com” for the foreground home page image
