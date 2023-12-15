@@ -1,0 +1,149 @@
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Flask</title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    </head>
+    <body style="padding: 20px;">
+    <form action="/add_author" method="post">
+      <label for="text_add_author">Add Author:</label><br>
+      <input type="text" id="text_add_author" name="text_add_author" value=""><br>
+      <input type="submit" value="Submit">
+    </form>
+    <form action="/add_book" method="post">
+      <label for="text_add_book">Add Book:</label><br>
+      <input type="text" id="new_book_isbn" name="new_book_isbn" value="ISBN"><br>
+      <input type="text" id="new_book_title" name="new_book_title" value="Title"><br>
+      <input type="number" id="new_book_author" name="new_book_author" value="Author (number)"><br>
+      <input type="text" id="new_book_genre" name="new_book_genre" value="Genre"><br>
+      <input type="number" id="new_book_pubyear" name="new_book_pubyear" value="Publishing Year"><br>
+      <input type="text" id="new_book_synopsis" name="new_book_synopsis" value="Synopsis"><br>
+      <input type="text" id="new_book_availability" name="new_book_availability" value="Availability"><br>
+      <input type="submit" value="Submit">
+    </form>
+    <form action="/add_librarian" method="post">
+      <label for="text_add_librarian">Add Librarian:</label><br>
+      <input type="text" id="new_lib_name" name="new_lib_name" value="Name"><br>
+      <input type="text" id="new_lib_email" name="new_lib_email" value="Email"><br>
+      <input type="text" id="new_lib_phone" name="new_lib_phone" value="Phone"><br>
+      <input type="text" id="new_is_lib" name="new_is_lib" value="isLib"><br>
+      <input type="text" id="new_lib_password" name="new_lib_password" value="Password"><br>
+      <input type="submit" value="Submit">
+    </form>
+    <form action="/add_user" method="post">
+      <label for="text_add_user">Add User:</label><br>
+      <input type="text" id="new_user_name" name="new_user_name" value="Name"><br>
+      <input type="text" id="new_user_email" name="new_user_email" value="Email"><br>
+      <input type="text" id="new_user_phone" name="new_user_phone" value="Phone"><br>
+      <input type="submit" value="Submit">
+    </form>
+    <form action="/search_authors" method="post">
+      <label for="text_search_author">Search Author:</label><br>
+      <input type="text" id="text_search_author" name="text_search_author" value=""><br>
+      <input type="submit" value="Submit">
+    </form>
+    <form action="/search_books" method="post">
+      <label for="text_search_book">Search Book:</label><br>
+      <input type="text" id="text_search_book" name="text_search_book" value=""><br>
+      <input type="submit" value="Submit">
+    </form>
+    <form action="/search_librarians" method="post">
+      <label for="text_search_librarain">Search Librarains:</label><br>
+      <input type="text" id="text_search_librarain" name="text_search_librarain" value=""><br>
+      <input type="submit" value="Submit">
+    </form>
+    <form action="/search_users" method="post">
+      <label for="text_search_user">Search Users:</label><br>
+      <input type="text" id="text_search_user" name="text_search_user" value=""><br>
+      <input type="submit" value="Submit">
+    </form>
+    <form action="/search_single_user" method="post">
+      <label for="text_search_single_user">Search For a Single User by ID:</label><br>
+      <input type="text" id="text_search_single_user" name="text_search_single_user" value="User_ID"><br>
+      <input type="submit" value="Submit">
+    </form>
+    <form action="/login_user" method="post">
+      <label for="text_search_single_user">Login Information:</label><br>
+      <input type="text" id="username" name="username" value="username"><br>
+      <input type="text" id="password" name="password" value="password"><br>
+      <input type="submit" value="Submit">
+    </form>
+    <form action="/checkout_book" method="post">
+      <label for="checkout_isbn">Checkout Book ISBN:</label><br>
+      <input type="text" id="checkout_isbn" name="checkout_isbn" value="checkout_isbn"><br>
+      <input type="submit" value="Submit">
+    </form>
+    <form action="/return_book" method="post">
+      <label for="return_isbn">Return Book ISBN:</label><br>
+      <input type="text" id="return_isbn" name="return_isbn" value="return_isbn"><br>
+      <input type="submit" value="Submit">
+    </form>
+      <br><br><hr>
+      <h1>Login</h1>
+      <h2>Login Search Results</h2>
+      <ul>
+        {% for user in login_user_data %}
+        <li> {{ text }} </li>
+        {% endfor %} 
+      </ul>
+      <h1>Searching</h1>
+      <h2>Author Search Results</h2>
+      <ul>
+        {% for text in author_search_data %}
+        <li> {{ text }} </li>
+        {% endfor %} 
+      </ul>
+      <h2>Book Search Results</h2>
+      <ul>
+        {% for text in book_search_data %}
+        <li> {{ text }} </li>
+        {% endfor %} 
+      </ul>
+      <h2>Librarian Search Results</h2>
+      <ul>
+        {% for text in librarian_search_data %}
+        <li> {{ text }} </li>
+        {% endfor %} 
+      </ul>
+      <h2>User Search Results</h2>
+      <ul>
+        {% for text in user_search_data %}
+        <li> {{ text }} </li>
+        {% endfor %} 
+      </ul>
+      <h2>Single User Search Results</h2>
+      <ul>
+        {% for text in single_user_search_data %}
+        <li> {{ text }} </li>
+        {% endfor %} 
+      </ul>
+      <h1>All Data</h1>
+      <h2>Authors</h2>
+      <ul>
+        {% for text in authors_data %}
+        <li> {{ text }} </li>
+        {% endfor %} 
+      </ul>
+      <h2>Books</h2>
+      <ul>
+        {% for text in books_data %}
+        <li> {{ text }} </li>
+        {% endfor %} 
+      </ul>
+      <h2>Librarians</h2>
+      <ul>
+        {% for text in librarians_data %}
+        <li> {{ text }} </li>
+        {% endfor %} 
+      </ul>
+      <h2>Users</h2>
+      <ul>
+        {% for text in users_data %}
+        <li> {{ text }} </li>
+        {% endfor %} 
+      </ul>
+</body>
+</html>
