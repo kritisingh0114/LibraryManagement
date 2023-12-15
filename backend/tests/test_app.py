@@ -100,15 +100,25 @@ class AppTestCase(unittest.TestCase):
         new_user_name = "Test User"
         new_user_email = "testuser@gmail.com"
         new_user_phone = "222-222-2222"
+        data = json.loads(json.dumps(search_user_op(new_user_email)))
+        assert data == []
         cur_size = json.loads(json.dumps(size_users_op()))[0][0]
         add_new = add_user_op(new_user_name, new_user_email, new_user_phone)
+        data = json.loads(json.dumps(search_user_op(new_user_email)))[0]
+        data.pop(0)
+        assert data == ['Test User', '222-222-2222', "testuser@gmail.com"]
         new_size = json.loads(json.dumps(size_users_op()))[0][0]
         assert new_size == cur_size + 1
 
     def test_remove_user_op(self):
         remove_lib = "testuser@gmail.com"
         prev_size = json.loads(json.dumps(size_users_op()))[0][0]
+        data = json.loads(json.dumps(search_user_op(remove_lib)))[0]
+        data.pop(0)
+        assert data == ['Test User', '222-222-2222', "testuser@gmail.com"]
         rows = remove_user_op(remove_lib)
+        data = json.loads(json.dumps(search_user_op(remove_lib)))
+        assert data == []
         new_size = json.loads(json.dumps(size_users_op()))[0][0]
         assert new_size == prev_size - 1
 

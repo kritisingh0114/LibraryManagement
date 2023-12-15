@@ -2,7 +2,7 @@ import pymysql
 # from pytest import console_main
 #database connection
 def create_connection():
-    return pymysql.connect(host="localhost", user="root", passwd="cs520mysqlinstaller!!", database="librarymanagement")
+    return pymysql.connect(host="localhost", user="root", passwd="1234", database="librarymanagement")
 
 #GETTER ROUTES
 # Returns all authors
